@@ -5310,7 +5310,7 @@ body::before {
             font-family: var(--paper-title-ref-serif) !important;
             font-style: normal !important;
             font-weight: 600 !important;
-            font-size: clamp(4.0rem, 7.4vw, 8.15rem) !important;
+            font-size: clamp(3.05rem, 5.45vw, 5.85rem) !important;
             line-height: 0.88 !important;
             letter-spacing: -0.065em !important;
             text-transform: none !important;
@@ -5361,7 +5361,7 @@ body::before {
             .hero h1.hero-title-balanced,
             .hero-restored h1.hero-title-balanced,
             .hero-title-balanced {
-                font-size: clamp(3.2rem, 14vw, 5.25rem) !important;
+                font-size: clamp(2.3rem, 10.8vw, 4.0rem) !important;
                 line-height: 0.94 !important;
                 letter-spacing: -0.055em !important;
                 max-width: 94vw !important;
@@ -5391,7 +5391,7 @@ body::before {
         }
 
         .hero-title-balanced {
-            font-size: clamp(4.0rem, 7.25vw, 7.8rem) !important;
+            font-size: clamp(3.05rem, 5.35vw, 5.75rem) !important;
             max-width: 1080px !important;
             margin-inline: auto !important;
             color: #f5f7ff !important;
@@ -5424,13 +5424,34 @@ body::before {
             .hero h1.hero-title-balanced,
             .hero-restored h1.hero-title-balanced,
             .hero-title-balanced {
-                font-size: clamp(3.1rem, 13.5vw, 5.1rem) !important;
+                font-size: clamp(2.25rem, 10.5vw, 3.85rem) !important;
                 line-height: 0.98 !important;
                 letter-spacing: -0.04em !important;
                 max-width: 94vw !important;
             }
         }
 
+
+
+        /* Title size micro-adjustment: slightly larger than the previous reduced version. */
+        .hero-restored h1.hero-title-balanced,
+        .hero h1 {
+            font-size: clamp(2.85rem, 5.55vw, 5.45rem) !important;
+        }
+
+        @media (max-width: 980px) {
+            .hero-restored h1.hero-title-balanced,
+            .hero h1 {
+                font-size: clamp(2.55rem, 7.6vw, 4.65rem) !important;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .hero-restored h1.hero-title-balanced,
+            .hero h1 {
+                font-size: clamp(2.22rem, 10.6vw, 3.35rem) !important;
+            }
+        }
 </style>
 </head>
 <body>
