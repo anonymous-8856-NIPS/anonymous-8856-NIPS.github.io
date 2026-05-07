@@ -673,6 +673,84 @@
     .figure-action { border: 1px solid rgba(139,69,19,.20); border-radius: 999px; background: #fffaf2; color: var(--bronze-dark); padding: 7px 10px; font-family: "Noto Sans SC", sans-serif; font-weight: 800; font-size: .84rem; cursor: pointer; }
     .figure-action:hover, .figure-action:focus-visible { background: #fff0d8; outline: none; }
 
+
+    .featured-plates-section {
+      margin: 24px 0 6px;
+      padding: 18px;
+      border: 1px solid rgba(139,69,19,.16);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,250,242,.86), rgba(250,243,232,.60));
+    }
+    .featured-plates-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid rgba(139,69,19,.14);
+      padding-bottom: 12px;
+    }
+    .featured-plates-title h3 {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Instrument Serif", "Noto Serif SC", serif;
+      font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .featured-plates-title p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.55;
+      text-align: right;
+    }
+    .featured-plate-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .featured-plate {
+      grid-column: span 12;
+      overflow: hidden;
+      border: 1px solid rgba(139,69,19,.16);
+      border-radius: 18px;
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 10px 28px rgba(44,24,16,.06);
+    }
+    .featured-plate .figure-head {
+      background: linear-gradient(90deg, rgba(44,24,16,.94), rgba(106,50,16,.90));
+      border-bottom: 0;
+    }
+    .featured-plate .figure-head b,
+    .featured-plate .figure-head span { color: var(--paper); }
+    .featured-plate .figure-frame {
+      min-height: 430px;
+      max-height: 660px;
+      overflow: auto;
+      align-items: start;
+      justify-content: start;
+      background: #fffdf8;
+    }
+    .featured-plate .figure-frame img {
+      display: none;
+      width: auto;
+      min-width: min(100%, 980px);
+      max-width: none;
+      max-height: none;
+      padding: 12px;
+      background: #fffdf8;
+    }
+    .featured-plate.loaded-image .figure-frame img { display: block; }
+    .featured-plate.loaded .missing-figure { display: none; }
+    .featured-plate .figure-copy {
+      font-size: .95rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,250,242,.78));
+    }
+    .featured-plate.compact-plate .figure-frame { min-height: 360px; }
+
+
     .results-grid { display: grid; gap: 24px; }
     .result-title { margin: 16px 0 10px; color: var(--ink); font-family: "Noto Sans SC", sans-serif; font-size: 1.08rem; }
     .results-table-container { overflow-x: auto; border-radius: 16px; border: 1px solid rgba(139,69,19,.14); background: rgba(255,250,242,.6); }
@@ -723,6 +801,8 @@
       .evolution-layout, .dataset-layout, .method-layout { grid-template-columns: 1fr; }
       .dataset-preview-grid { grid-template-columns: 1fr; }
       .figure-card, .figure-card.wide, .figure-card.dense { grid-column: span 6; }
+      .featured-plates-title { display: block; }
+      .featured-plates-title p { text-align: left; margin-top: 8px; }
       .figure-card.hero { grid-column: span 12; }
     }
     @media (max-width: 720px) {
@@ -863,9 +943,9 @@
           </div>
         </div>
         <div class="dataset-preview-grid" aria-label="Dataset figures">
-          <figure class="mini-figure" data-mini-srcs="./img/Bar.png|./img/Bar.pdf|./img/fig_data_stats.png|./img/fig_data_stats.pdf|./img/data_statistics.png|./img/data_statistics.pdf"><div class="img-holder"><img alt="Dataset statistics chart" loading="lazy"><div class="missing-mini">Place <code>Bar.png</code>/<code>Bar.pdf</code> or <code>fig_data_stats.png</code>/<code>fig_data_stats.pdf</code> under <code>./img/</code>.</div></div><p><strong>Coverage statistics.</strong> Use the chart to explain why complete chains are scarce but pairwise evidence is abundant.</p></figure>
-          <figure class="mini-figure" data-mini-srcs="./img/contextual_features.png|./img/contextual_features.pdf|./img/fig_contextual_features.png|./img/fig_contextual_features.pdf"><div class="img-holder"><img alt="Contextual feature construction diagram" loading="lazy"><div class="missing-mini">Place <code>contextual_features.png</code> or <code>contextual_features.pdf</code> under <code>./img/</code>.</div></div><p><strong>Feature construction.</strong> Show how visual, structural, semantic, contextual, and spatiotemporal signals enter the dataset.</p></figure>
-          <figure class="mini-figure" data-mini-srcs="./img/dataset_finegrained.png|./img/dataset_finegrained.pdf|./img/fine_grained_dataset.png|./img/fine_grained_dataset.pdf"><div class="img-holder"><img alt="Fine-grained evolutionary trajectories" loading="lazy"><div class="missing-mini">Place <code>dataset_finegrained.png</code> or <code>dataset_finegrained.pdf</code> under <code>./img/</code>.</div></div><p><strong>Fine-grained trajectories.</strong> Dense glyph figures should stay inspectable but compact, avoiding large blank spaces.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/Bar.png"><div class="img-holder"><img alt="Dataset statistics chart" loading="lazy"><div class="missing-mini">Place <code>Bar.png</code> under <code>./img/</code>.</div></div><p><strong>Coverage statistics.</strong> Use the chart to explain why complete chains are scarce but pairwise evidence is abundant.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/contextual_features.png"><div class="img-holder"><img alt="Contextual feature construction diagram" loading="lazy"><div class="missing-mini">Place <code>contextual_features.png</code> under <code>./img/</code>.</div></div><p><strong>Feature construction.</strong> Show how visual, structural, semantic, contextual, and spatiotemporal signals enter the dataset.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/dataset_finegrained.png"><div class="img-holder"><img alt="Fine-grained evolutionary trajectories" loading="lazy"><div class="missing-mini">Place <code>dataset_finegrained.png</code> under <code>./img/</code>.</div></div><p><strong>Fine-grained trajectories.</strong> Dense glyph figures should stay inspectable but compact, avoiding large blank spaces.</p></figure>
         </div>
       </section>
 
@@ -900,6 +980,39 @@
           </div>
         </div>
         <div id="figureGroups"></div>
+
+        <div class="featured-plates-section" id="featured-plates" aria-labelledby="featured-plates-title">
+          <div class="featured-plates-title">
+            <h3 id="featured-plates-title">Full-Scale Visual Plates</h3>
+            <p>These four dense figures are shown separately rather than hidden inside the general evidence ladder, because readers need to inspect glyph-level structure at full scale.</p>
+          </div>
+          <div class="featured-plate-grid">
+            <article class="featured-plate" data-srcs="./img/manifold_neighborhood.png" data-title="Manifold Neighborhood Visualization">
+              <div class="figure-head"><b>PLATE A</b><span>Manifold Neighborhood Visualization · Visual & Semantic Similarity Clusters</span></div>
+              <div class="figure-frame"><img alt="Manifold neighborhood visualization showing visual and semantic similarity clusters" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>./img/manifold_neighborhood.png</code></div></div>
+              <div class="figure-copy"><strong>Why it is singled out.</strong> This is local geometric evidence: nearest-neighbor structure should preserve both visual similarity and semantic/paleographic relationships. Keep it large so individual glyph clusters remain readable.</div>
+              <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
+            </article>
+            <article class="featured-plate" data-srcs="./img/dataset_finegrained.png" data-title="Fine-Grained Evolutionary Trajectories">
+              <div class="figure-head"><b>PLATE B</b><span>Fine-Grained Evolutionary Trajectories</span></div>
+              <div class="figure-frame"><img alt="Fine-grained evolutionary trajectories across historical script periods" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>./img/dataset_finegrained.png</code></div></div>
+              <div class="figure-copy"><strong>Why it is singled out.</strong> This figure explains the dataset’s value: the model is not trained on isolated snapshots, but on temporally fine-grained trajectories and partial cross-era correspondences.</div>
+              <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
+            </article>
+            <article class="featured-plate" data-srcs="./img/gallery_full.png" data-title="Comprehensive Retrieval Gallery">
+              <div class="figure-head"><b>PLATE C</b><span>Comprehensive Retrieval Gallery</span></div>
+              <div class="figure-frame"><img alt="Comprehensive retrieval gallery with qualitative decipherment examples" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>./img/gallery_full.png</code></div></div>
+              <div class="figure-copy"><strong>Why it is singled out.</strong> This is the reader-facing qualitative proof. It should be displayed as a large inspectable gallery, not compressed into a small appendix-style thumbnail.</div>
+              <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
+            </article>
+            <article class="featured-plate" data-srcs="./img/variant_network_large.png" data-title="Unconstrained Global Variant Network of Archaic Scripts">
+              <div class="figure-head"><b>PLATE D</b><span>Unconstrained Global Variant Network of Archaic Scripts</span></div>
+              <div class="figure-frame"><img alt="Unconstrained global variant network of archaic scripts" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>./img/variant_network_large.png</code></div></div>
+              <div class="figure-copy"><strong>Why it is singled out.</strong> This complex network shows the full variant ecosystem before pruning. It is visually rich and should appear as its own full-width evidence plate.</div>
+              <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
+            </article>
+          </div>
+        </div>
       </section>
 
       <section class="section-card fade-lift" id="results">
@@ -1023,19 +1136,10 @@
       return /\.pdf(?:[?#].*)?$/i.test(src || '');
     }
 
-    function expandSourceCandidates(candidates, options = {}) {
-      const raw = Array.isArray(candidates) ? candidates.filter(Boolean) : String(candidates || '').split('|').filter(Boolean);
-      if (options.imageOnly) return raw;
-      const expanded = [];
-      raw.forEach(src => {
-        if (!src || expanded.includes(src)) return;
-        expanded.push(src);
-        const pdf = src.replace(/\.(png|jpg|jpeg|webp|svg)$/i, '.pdf');
-        if (pdf !== src && !expanded.includes(pdf)) expanded.push(pdf);
-        const upperPdf = src.replace(/\.(png|jpg|jpeg|webp|svg)$/i, '.PDF');
-        if (upperPdf !== src && upperPdf !== pdf && !expanded.includes(upperPdf)) expanded.push(upperPdf);
-      });
-      return expanded;
+    function expandSourceCandidates(candidates) {
+      return Array.isArray(candidates)
+        ? candidates.filter(Boolean)
+        : String(candidates || '').split('|').filter(Boolean);
     }
 
     function resourceExists(src) {
@@ -1067,7 +1171,7 @@
 
     async function loadWithFallback(img, candidates, onSuccess, onFail, options = {}) {
       const sources = expandSourceCandidates(candidates, options);
-      const hostCard = img.closest('.figure-card, .mini-figure');
+      const hostCard = img.closest('.figure-card, .mini-figure, .featured-plate');
       const container = img.parentElement;
       if (hostCard) hostCard.classList.remove('loaded', 'loaded-image', 'loaded-pdf');
       if (img) {
@@ -1267,58 +1371,56 @@
 
     const figureGroups = [
       {
-        code: 'I', title: 'Motivation and data: why direct matching is not enough', meta: 'wide + compact', open: true,
-        note: 'Start compact but convincing: first explain non-monotone script evolution, then show why fine-grained and partial cross-era data are necessary.',
+        code: 'I', title: 'Motivation: why single-period matching fails', meta: 'problem and data', open: true,
+        note: 'Start with the paper’s opening problem: OBI decipherment fails when characters change non-monotonically across intermediate eras. Keep the opening evolution diagram large, then use compact supporting evidence for data scarcity and feature construction.',
         figures: [
-          { n: '01', title: 'Evolution of Chinese Script', className: 'hero', src: ['./img/Evolution.png', './img/evolution.png', './img/Evolution.jpg'], alt: 'Evolution of Chinese script across historical eras', copy: '<strong>Opening problem figure.</strong> Show this large enough for readers to see why intermediate dynasties matter.' },
-          { n: '02', title: 'Dataset Statistics', className: 'wide', src: ['./img/Bar.png', './img/fig_data_stats.png', './img/data_statistics.png'], alt: 'Dataset statistics', copy: '<strong>Data bottleneck.</strong> Complete chains are limited, while partial pairwise evidence is much richer.' },
-          { n: '03', title: 'Fine-Grained Trajectories', className: 'wide scrollable', src: ['./img/dataset_finegrained.png', './img/fine_grained_dataset.png'], alt: 'Fine-grained evolutionary trajectories', copy: '<strong>Dense inspection figure.</strong> Use scrolling rather than shrinking every glyph until unreadable.' }
+          { n: '01', title: 'Opening Evolution Problem', className: 'hero', src: ['./img/Evolution.png'], alt: 'Evolution of Chinese script across historical periods', copy: '<strong>Opening problem figure.</strong> Show this large enough for readers to see why intermediate dynasties matter.' },
+          { n: '02', title: 'Dataset Statistics', className: 'wide', src: ['./img/Bar.png'], alt: 'Dataset statistics and OBI coverage chart', copy: '<strong>Data bottleneck.</strong> Complete chains are limited, while partial pairwise evidence is much richer.' },
+          { n: '03', title: 'Feature Construction', className: 'wide', src: ['./img/contextual_features.png'], alt: 'Contextual feature construction', copy: '<strong>Input representation.</strong> Connect visual, structural, semantic, contextual, and spatiotemporal signals to the dataset.' }
         ]
       },
       {
-        code: 'II', title: 'Pre-exploratory diagnosis: why the proposed method is necessary', meta: 'diagnosis sequence',
+        code: 'II', title: 'Pre-exploratory diagnosis: why the method is necessary', meta: 'pre-analysis figures',
         note: 'This section should read like a visual proof: abstraction → historical pressure → workflow → clustering failures → rule explosion → Neural ODE.',
         figures: [
-          { n: '04', title: 'Invariant Core vs Variant Surface', className: 'wide', src: ['./img/pre1-abstraction.png', './img/fig_pre1_abstraction.png'], alt: 'Invariant semantic core and variant visual surface', copy: '<strong>Conceptual foundation.</strong> Characters preserve a semantic core while visual surfaces evolve.' },
-          { n: '05', title: 'Socio-Cultural Pressures', className: 'wide', src: ['./img/pre2-evoluation.png', './img/pre2-evolution.png', './img/fig_pre2_evolution.png'], alt: 'Socio-cultural pressures driving script evolution', copy: '<strong>Historical mechanism.</strong> Writing efficiency, reform, and usage pressure make evolution continuous but non-uniform.' },
-          { n: '06', title: 'Diagnosis Workflow', className: 'hero scrollable', src: ['./img/pre3-workflow.png', './img/fig_pre3_workflow.png'], alt: 'Pre-exploratory diagnosis workflow', copy: '<strong>Complex figure.</strong> Give it full width because it explains the paper’s research path before MSEF appears.' },
-          { n: '07', title: 'Morphological Clusters', className: 'wide', src: ['./img/pre4-clustering.png', './img/fig_pre4_clustering.png'], alt: 'Morphological clustering analysis', copy: '<strong>Empirical diagnosis.</strong> Different transition types explain why static retrieval fails.' },
-          { n: '08', title: 'Rule-System Explosion', className: 'wide', src: ['./img/pre5-rule_system.png', './img/pre5-rule-system.png'], alt: 'Rule system limitation', copy: '<strong>Alternative rejected.</strong> A hand-built rule system is brittle and does not scale.' },
-          { n: '09', title: 'Neural ODE Motivation', className: 'hero', src: ['./img/pre6-neuralode.png', './img/neural_ode_diagram.png'], alt: 'Neural ODE motivation for script evolution', copy: '<strong>Bridge into method.</strong> This is the visual transition from diagnosis to continuous dynamics.' }
+          { n: '04', title: 'Invariant Core vs Variant Surface', className: 'wide', src: ['./img/pre1-abstraction.png'], alt: 'Invariant semantic core and variant visual surface', copy: '<strong>Conceptual foundation.</strong> Characters preserve a semantic core while visual surfaces evolve.' },
+          { n: '05', title: 'Evolutionary Pressure', className: 'wide', src: ['./img/pre2-evoluation.png'], alt: 'Evolutionary pressure in script changes', copy: '<strong>Historical pressure.</strong> Shows why script changes are systematic rather than random visual noise.' },
+          { n: '06', title: 'Pre-Diagnosis Workflow', className: 'hero scrollable', src: ['./img/pre3-workflow.png'], alt: 'Pre-exploratory diagnosis workflow', copy: '<strong>Reasoning flow.</strong> This is a complex figure and should stay full-width and inspectable.' },
+          { n: '07', title: 'Evolution Clustering', className: 'wide', src: ['./img/pre4-clustering.png'], alt: 'Evolution-pattern clustering analysis', copy: '<strong>Empirical diagnosis.</strong> Links baseline failure modes to abrupt and non-monotone transitions.' },
+          { n: '08', title: 'Rule-System Explosion', className: 'wide', src: ['./img/pre5-rule_system.png'], alt: 'Rule-system explosion in discrete paleographic rules', copy: '<strong>Why not rules only?</strong> Discrete expert rules become hard to scale across incomplete, irregular chains.' },
+          { n: '09', title: 'Neural ODE Motivation', className: 'hero', src: ['./img/pre6-neuralode.png'], alt: 'Neural ODE motivation for script evolution', copy: '<strong>Bridge into method.</strong> This is the visual transition from diagnosis to continuous dynamics.' }
         ]
       },
       {
-        code: 'III', title: 'MSEF and CBED: continuous dynamics plus bidirectional inference', meta: 'method core',
-        note: 'The method figure should not be hidden. MSEF overview is the anchor; CBED and search-space figures explain how inference uses the learned flow.',
+        code: 'III', title: 'Core method: MSEF and CBED inference', meta: 'main method figures',
+        note: 'Figure 2 / framework overview is the center of the page because it contains both continuous manifold evolution and cascaded bidirectional decipherment.',
         figures: [
-          { n: '10', title: 'MSEF Overview', className: 'hero scrollable', src: ['./img/fig_framework_overview.png', './img/framework_overview.png'], alt: 'MSEF continuous manifold and CBED overview', copy: '<strong>Main method figure.</strong> Use full width; it combines continuous manifold evolution and cascaded bidirectional decipherment.' },
-          { n: '11', title: 'MSEF Architecture', className: 'wide scrollable', src: ['./img/MSEF_Architecture_Diagram.png', './img/msef_architecture.png'], alt: 'MSEF architecture diagram', copy: '<strong>Architecture detail.</strong> Show encoder, ODE transition, survival net, and inference pipeline as an engineering object.' },
-          { n: '12', title: 'CBED Verification', className: 'wide', src: ['./img/fig4.png', './img/bidirectional_verification.png'], alt: 'CBED backward verification figure', copy: '<strong>Inference logic.</strong> Forward recall alone is not enough; backward verification removes inconsistent candidates.' },
-          { n: '13', title: 'Search Space and Survival Gate', className: 'wide', src: ['./img/Scenario_C_Search_Space.png', './img/search_space.png'], alt: 'Search space under survival-aware pruning', copy: '<strong>Survival-aware pruning.</strong> Explain how the model avoids impossible extinct branches.' },
-          { n: '14', title: 'Extinction Landscape', className: 'wide', src: ['./img/extinction_landscape.png', './img/fig_extinction_landscape.png'], alt: 'Extinction landscape', copy: '<strong>Character lifespan.</strong> Use this to connect survival prediction with paleographic realism.' }
+          { n: '10', title: 'MSEF Framework Overview', className: 'hero scrollable', src: ['./img/fig_framework_overview.png'], alt: 'Overview of MSEF and cascaded bidirectional decipherment', copy: '<strong>Main method figure.</strong> Give it full width; it combines continuous manifold evolution and cascaded bidirectional decipherment.' },
+          { n: '11', title: 'MSEF Architecture', className: 'wide scrollable', src: ['./img/MSEF_Architecture_Diagram.png'], alt: 'MSEF architecture diagram', copy: '<strong>Architecture detail.</strong> Show encoder, ODE transition, survival net, and inference pipeline as an engineering object.' },
+          { n: '12', title: 'Neural ODE Diagram', className: 'wide', src: ['./img/neural_ode_diagram.png'], alt: 'Neural ODE diagram', copy: '<strong>Continuous transition.</strong> Explain how the model moves characters through era-specific manifolds.' },
+          { n: '13', title: 'CBED Verification', className: 'wide', src: ['./img/fig4.png'], alt: 'CBED backward verification figure', copy: '<strong>Inference logic.</strong> Forward recall alone is not enough; backward verification removes inconsistent candidates.' },
+          { n: '14', title: 'Search Space and Survival Gate', className: 'wide', src: ['./img/Scenario_C_Search_Space.png'], alt: 'Search space under survival-aware pruning', copy: '<strong>Survival-aware pruning.</strong> Explain how the model avoids impossible extinct branches.' },
+          { n: '15', title: 'Extinction Landscape', className: 'wide', src: ['./img/extinction_landscape.png'], alt: 'Extinction landscape', copy: '<strong>Character lifespan.</strong> Connect survival prediction with paleographic realism.' }
         ]
       },
       {
         code: 'IV', title: 'Mechanistic post-analysis: evidence that the model learns structure', meta: 'mechanism figures',
         note: 'Post-analysis is one of the strongest Best Paper signals. Large mechanism figures should be shown as evidence, not hidden as appendix thumbnails.',
         figures: [
-          { n: '15', title: 'Attention Heatmap', className: 'wide', src: ['./img/heatmap.png', './img/attention_heatmap.png'], alt: 'Attention heatmap', copy: '<strong>Where the model looks.</strong> Highlight structural regions driving evolutionary matching.' },
-          { n: '16', title: 'Saliency Ablation', className: 'wide', src: ['./img/saliency_ablation.png', './img/fig_saliency_ablation.png'], alt: 'Saliency ablation', copy: '<strong>Causal necessity.</strong> Shows whether highlighted regions actually matter for predictions.' },
-          { n: '17', title: 'Velocity Topology', className: 'hero scrollable', src: ['./img/velocity_topology.png', './img/fig_velocity_topology.png'], alt: 'Velocity topology of learned manifold', copy: '<strong>Complex mechanism figure.</strong> Give full width: it links global topology, local velocity, extinct clusters, and individual trajectories.' },
-          { n: '18', title: 'Attention Circuits', className: 'hero scrollable', src: ['./img/attention_circuits.png', './img/fig_attention_circuits.png'], alt: 'Attention circuit diagram', copy: '<strong>Information routing.</strong> A rich circuit diagram deserves full-scale inspection rather than a small card.' },
-          { n: '19', title: 'Causal Patching', className: 'wide', src: ['./img/causal_patching_modified.png', './img/fig_causal_patching.png'], alt: 'Causal patching analysis', copy: '<strong>Mechanism test.</strong> Demonstrates whether internal state changes alter evolutionary predictions.' },
-          { n: '20', title: 'Vector Arithmetic', className: 'wide', src: ['./img/vector_arithmetic_similarity.png', './img/fig_vector_arithmetic.png'], alt: 'Vector arithmetic similarity', copy: '<strong>Latent compositionality.</strong> Evidence that the learned space is not just memorized nearest-neighbor lookup.' }
+          { n: '16', title: 'Attention Heatmap', className: 'wide', src: ['./img/heatmap.png'], alt: 'Attention heatmap', copy: '<strong>Where the model looks.</strong> Highlight structural regions driving evolutionary matching.' },
+          { n: '17', title: 'Saliency Ablation', className: 'wide', src: ['./img/saliency_ablation.png'], alt: 'Saliency ablation', copy: '<strong>Causal necessity.</strong> Shows whether highlighted regions actually matter for predictions.' },
+          { n: '18', title: 'Velocity Topology', className: 'hero scrollable', src: ['./img/velocity_topology.png'], alt: 'Velocity topology of learned manifold', copy: '<strong>Complex mechanism figure.</strong> Give full width: it links global topology, local velocity, extinct clusters, and individual trajectories.' },
+          { n: '19', title: 'Attention Circuits', className: 'hero scrollable', src: ['./img/attention_circuits.png'], alt: 'Attention circuit diagram', copy: '<strong>Information routing.</strong> A rich circuit diagram deserves full-scale inspection rather than a small card.' },
+          { n: '20', title: 'Causal Patching', className: 'wide', src: ['./img/causal_patching_modified.png'], alt: 'Causal patching analysis', copy: '<strong>Mechanism test.</strong> Demonstrates whether internal state changes alter evolutionary predictions.' },
+          { n: '21', title: 'Vector Arithmetic', className: 'wide', src: ['./img/vector_arithmetic_similarity.png'], alt: 'Vector arithmetic similarity', copy: '<strong>Latent compositionality.</strong> Evidence that the learned space is not just memorized nearest-neighbor lookup.' }
         ]
       },
       {
         code: 'V', title: 'Selection and validation: networks, neighborhoods, and retrieval evidence', meta: 'qualitative evidence',
-        note: 'Use raw-vs-pruned networks as a before/after pair, then show manifold organization and retrieval outputs. Dense glyph figures are scrollable and inspectable.',
+        note: 'This compact ladder points to validation figures, while the four densest figures are repeated below as full-scale standalone plates.',
         figures: [
-          { n: '21', title: 'Raw Variant Network', className: 'wide scrollable', src: ['./img/variant_network_large.png', './img/fig_variant_network_full.png'], alt: 'Raw variant network', copy: '<strong>Before.</strong> The raw archaic variant ecosystem is dense and hard to interpret.' },
-          { n: '22', title: 'Pruned Backbones', className: 'wide scrollable', src: ['./img/variant_network_large_simplified.png', './img/fig_variant_network_simplified.png'], alt: 'Pruned variant backbones', copy: '<strong>After.</strong> Survival-aware selection clarifies standardized evolutionary backbones.' },
-          { n: '23', title: 'Radical Groups', className: 'wide', src: ['./img/fig5.png', './img/manifold_radical.png'], alt: 'Manifold visualization by radical groups', copy: '<strong>Geometry validation.</strong> Known radical families should organize inside the learned manifold.' },
-          { n: '24', title: 'Manifold Neighborhood', className: 'wide scrollable', src: ['./img/manifold_neighborhood.png', './img/fig_manifold_neighborhood.png'], alt: 'Manifold neighborhood visualization', copy: '<strong>Local evidence.</strong> Shows nearest-neighbor structure in OBI and Bronze spaces.' },
-          { n: '25', title: 'Retrieval Gallery', className: 'hero scrollable', src: ['./img/gallery_full.png', './img/retrieval_gallery.png'], alt: 'Full retrieval gallery', copy: '<strong>Qualitative outputs.</strong> Keep it large and scrollable so individual glyphs remain readable.' }
+          { n: '22', title: 'Pruned Backbones', className: 'wide scrollable', src: ['./img/variant_network_large_simplified.png'], alt: 'Pruned variant backbones', copy: '<strong>After pruning.</strong> Survival-aware selection clarifies standardized evolutionary backbones.' },
+          { n: '23', title: 'Radical Groups', className: 'wide', src: ['./img/fig5.png'], alt: 'Manifold visualization by radical groups', copy: '<strong>Geometry validation.</strong> Known radical families should organize inside the learned manifold.' }
         ]
       }
     ];
@@ -1338,7 +1440,7 @@
               ${group.figures.map(fig => `
                 <article class="figure-card ${fig.className || ''}" data-srcs="${fig.src.join('|')}" data-title="${fig.title}">
                   <div class="figure-head"><b>FIG ${fig.n}</b><span>${fig.title}</span></div>
-                  <div class="figure-frame"><img alt="${fig.alt}" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>${fig.src[0].replace(/\.(png|jpg|jpeg|webp|svg)$/i, ".png / .pdf")}</code></div></div>
+                  <div class="figure-frame"><img alt="${fig.alt}" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>${fig.src[0]}</code></div></div>
                   <div class="figure-copy">${fig.copy}</div>
                   <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
                 </article>
@@ -1349,6 +1451,15 @@
       `).join('');
 
       $$('.figure-card', target).forEach(card => {
+        const img = $('img', card);
+        const sources = (card.dataset.srcs || '').split('|');
+        loadWithFallback(img, sources, src => card.classList.add('loaded'));
+      });
+      initFeaturedPlates();
+    }
+
+    function initFeaturedPlates() {
+      $$('.featured-plate').forEach(card => {
         const img = $('img', card);
         const sources = (card.dataset.srcs || '').split('|');
         loadWithFallback(img, sources, src => card.classList.add('loaded'));
@@ -1394,9 +1505,9 @@
       document.addEventListener('click', event => {
         const full = event.target.closest('[data-full]');
         const copy = event.target.closest('[data-copy]');
-        if (full) openModal(full.closest('.figure-card'));
+        if (full) openModal(full.closest('.figure-card, .featured-plate'));
         if (copy) {
-          const card = copy.closest('.figure-card');
+          const card = copy.closest('.figure-card, .featured-plate');
           const resolved = $('img', card)?.dataset.resolvedSrc || '';
           const first = resolved || (card.dataset.srcs || '').split('|')[0] || '';
           navigator.clipboard?.writeText(first.replace('./img/', '')).then(() => showToast('Filename copied.'), () => showToast(first.replace('./img/', '')));
