@@ -12,6 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&amp;family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"/>
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;f[]=clash-display@500,600,700&amp;f[]=sentient@400,500,600,700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cormorant+Unicase:wght@500;600;700&amp;family=IM+Fell+English:ital@0;1&amp;family=Marcellus&amp;family=Mea+Culpa&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,ital,wght@6..96,1,500..800&amp;family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&amp;family=Playfair+Display:ital,wght@1,500..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;family=Imperial+Script&amp;family=Luxurious+Script&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
@@ -5138,6 +5141,231 @@ body::before {
             .section-title,
             .section-header .section-title {
                 font-size: clamp(2.55rem, 14vw, 3.75rem) !important;
+            }
+        }
+
+
+        /* Final typography scope:
+           Only the paper title uses a readable floral/italic English style.
+           All section titles and module titles return to a clean premium display system. */
+        :root {
+            --font-paper-title-floral: 'Cormorant Garamond', 'Bodoni Moda', 'Ibarra Real Nova', Georgia, serif;
+            --font-clean-display-final: 'Fraunces', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-clean-body-final: 'Manrope', 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-clean-mono-final: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        body {
+            font-family: var(--font-clean-body-final) !important;
+        }
+
+        /* Paper title only: floral but readable, no excessive swashes. */
+        .hero h1.hero-title-balanced,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .hero-title-balanced span,
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub {
+            font-family: var(--font-paper-title-floral) !important;
+            font-style: italic !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.035em !important;
+            line-height: 0.96 !important;
+            text-transform: none !important;
+            font-feature-settings: 'kern' 1, 'liga' 1;
+            text-shadow:
+                0 12px 34px rgba(0,0,0,0.36),
+                0 0 18px rgba(111,202,255,0.10) !important;
+        }
+
+        .hero-title-balanced {
+            font-size: clamp(3.4rem, 7.1vw, 7.45rem) !important;
+            max-width: 1020px !important;
+            margin-inline: auto !important;
+        }
+
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub {
+            color: #dff5ff !important;
+            background: linear-gradient(135deg, #ffffff 0%, #dff5ff 52%, #a9cfff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Every other title: normal advanced typography, not floral/script. */
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title,
+        .demo-card-title,
+        .stage-headline,
+        .formula-board h3,
+        .claim-body h3,
+        .boundary-signal-head h3,
+        .problem-card h3,
+        .opt-body h3,
+        .caption-card h4,
+        .boundary-signal-card h4,
+        .stream-title,
+        .formula-step strong,
+        .evidence-card h4,
+        .demo-title,
+        .diagnostic-panel h3,
+        .diagnostic-panel h4,
+        h1:not(.hero-title-balanced),
+        h2:not(.section-title),
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-clean-display-final) !important;
+            font-style: normal !important;
+            font-weight: 700 !important;
+            font-variation-settings: 'SOFT' 62, 'WONK' 0.5;
+            letter-spacing: -0.034em !important;
+            line-height: 1.06 !important;
+            text-transform: none !important;
+            text-shadow: none !important;
+        }
+
+        .section-title,
+        .section-header .section-title {
+            font-size: clamp(2.35rem, 4.4vw, 4.1rem) !important;
+            max-width: 1050px !important;
+            margin-inline: auto !important;
+        }
+
+        .section-tag,
+        .hero-badge,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .opt-badge,
+        .metric-name,
+        .control-labels,
+        .timeline-landmarks span,
+        .boundary-scrub label,
+        .waterfall-label,
+        .live-readout span,
+        .mini-metric small,
+        .formula-step small,
+        .demo-watermark,
+        .annotation-pin,
+        .boundary-readout span,
+        .signal-strength-row strong,
+        .boundary-note,
+        .nav-logo {
+            font-family: var(--font-clean-mono-final) !important;
+            font-style: normal !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.075em !important;
+            text-transform: uppercase !important;
+        }
+
+        .btn,
+        .lab-button,
+        .phase-btn,
+        .tab-btn,
+        .claim-tab,
+        .boundary-auto-button,
+        .nav-links a {
+            font-family: var(--font-clean-body-final) !important;
+            font-style: normal !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.006em !important;
+            text-transform: none !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero-title-balanced,
+            .hero-title-balanced span,
+            .hero-title-balanced .title-emphasis-main,
+            .hero-title-balanced .title-emphasis-sub {
+                font-size: clamp(3rem, 15vw, 4.9rem) !important;
+                line-height: 1.02 !important;
+                letter-spacing: -0.035em !important;
+            }
+
+            .section-title,
+            .section-header .section-title {
+                font-size: clamp(2.1rem, 10vw, 3.1rem) !important;
+                line-height: 1.05 !important;
+            }
+        }
+
+
+        /* Requested final title treatment: antique aristocratic floral English, readable; all other typography/layout unchanged. */
+        :root {
+            --font-paper-title-floral-final: 'Pinyon Script', 'Imperial Script', 'Luxurious Script', 'Cormorant Garamond', Georgia, serif;
+            --paper-title-ivory: #fff8e8;
+            --paper-title-gold: #d6b56d;
+            --paper-title-shadow: rgba(78, 40, 10, 0.34);
+        }
+
+        .hero h1.hero-title-balanced,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .hero-title-balanced span,
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub {
+            font-family: var(--font-paper-title-floral-final) !important;
+            font-style: normal !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.012em !important;
+            line-height: 1.04 !important;
+            text-transform: none !important;
+            font-variant-ligatures: common-ligatures discretionary-ligatures !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'swsh' 1 !important;
+            color: var(--paper-title-ivory) !important;
+            -webkit-text-fill-color: var(--paper-title-ivory) !important;
+            text-shadow:
+                0 1px 0 rgba(255,255,255,0.22),
+                0 10px 24px var(--paper-title-shadow),
+                0 26px 68px rgba(0,0,0,0.42) !important;
+            text-wrap: balance;
+        }
+
+        .hero-title-balanced {
+            font-size: clamp(3.45rem, 7.35vw, 7.75rem) !important;
+            max-width: 1140px !important;
+            margin-inline: auto !important;
+        }
+
+        .hero-title-balanced span {
+            transform: translateZ(0);
+        }
+
+        .hero-title-balanced span {
+            display: block !important;
+            margin-block: -0.03em !important;
+        }
+
+        .hero-title-balanced span:nth-child(1),
+        .hero-title-balanced span:nth-child(2),
+        .hero-title-balanced span:nth-child(3) {
+            filter: drop-shadow(0 9px 20px rgba(214,181,109,0.08));
+        }
+
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub {
+            background: linear-gradient(100deg, #fffaf0 0%, var(--paper-title-gold) 48%, #fff2c2 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            color: transparent !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 14px 28px rgba(214,181,109,0.12));
+        }
+
+        @media (max-width: 760px) {
+            .hero-title-balanced,
+            .hero-title-balanced span,
+            .hero-title-balanced .title-emphasis-main,
+            .hero-title-balanced .title-emphasis-sub {
+                font-size: clamp(3rem, 14vw, 4.8rem) !important;
+                line-height: 1.08 !important;
+                letter-spacing: 0.006em !important;
             }
         }
 
