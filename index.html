@@ -459,18 +459,7 @@
       background: rgba(255,250,242,.55);
     }
     .frame-stage.has-image img { display: block; }
-    .frame-placeholder {
-      display: grid;
-      place-items: center;
-      width: calc(100% - 32px);
-      min-height: 180px;
-      padding: 18px;
-      border: 1px dashed rgba(139,69,19,.30);
-      border-radius: 16px;
-      color: var(--muted);
-      text-align: center;
-      background: rgba(255,250,242,.76);
-    }
+    .frame-placeholder { display: none; }
     .frame-stage.has-image .frame-placeholder { display: none; }
     .frame-error {
       position: absolute;
@@ -564,7 +553,9 @@
     .mini-figure { padding: 10px; border-radius: 14px; border: 1px solid rgba(139,69,19,.12); background: rgba(255,250,242,.68); }
     .mini-figure .img-holder { min-height: 110px; border-radius: 10px; background: rgba(244,229,207,.72); display: grid; place-items: center; overflow: hidden; border: 1px dashed rgba(139,69,19,.18); }
     .mini-figure img { display: none; width: 100%; max-height: 180px; object-fit: contain; background: white; }
-    .mini-figure.loaded img { display: block; }
+    .mini-figure object, .mini-figure iframe { display: none; width: 100%; height: 170px; border: 0; background: white; border-radius: 8px; }
+    .mini-figure.loaded-image img { display: block; }
+    .mini-figure.loaded-pdf object, .mini-figure.loaded-pdf iframe { display: block; }
     .mini-figure.loaded .missing-mini { display: none; }
     .missing-mini { padding: 12px; text-align: center; font-size: .78rem; color: var(--muted); }
     .mini-figure p { margin: 9px 0 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
@@ -667,10 +658,13 @@
     .figure-card.hero .figure-frame { min-height: 390px; }
     .figure-card.wide .figure-frame, .figure-card.dense .figure-frame { min-height: 255px; }
     .figure-frame img { display: none; width: 100%; max-height: 520px; object-fit: contain; padding: 10px; background: white; }
-    .figure-card.loaded .figure-frame img { display: block; }
+    .figure-frame object, .figure-frame iframe { display: none; width: 100%; min-height: 420px; height: min(68vh, 720px); border: 0; background: white; }
+    .figure-card.loaded-image .figure-frame img { display: block; }
+    .figure-card.loaded-pdf .figure-frame object, .figure-card.loaded-pdf .figure-frame iframe { display: block; }
     .figure-card.loaded .missing-figure { display: none; }
     .figure-card.scrollable .figure-frame { overflow: auto; justify-content: start; align-items: start; max-height: 540px; }
-    .figure-card.scrollable.loaded img { width: auto; max-width: none; min-width: 900px; max-height: none; }
+    .figure-card.scrollable.loaded-image img { width: auto; max-width: none; min-width: 900px; max-height: none; }
+    .figure-card.scrollable.loaded-pdf .figure-frame { max-height: 720px; }
     .missing-figure { padding: 18px; max-width: 360px; color: var(--muted); text-align: center; font-size: .88rem; line-height: 1.55; }
     .missing-figure code { display: block; margin-top: 8px; color: var(--bronze-dark); overflow-wrap: anywhere; }
     .figure-copy { flex: 1; padding: 13px 14px; color: var(--muted); line-height: 1.56; font-size: .92rem; }
@@ -814,7 +808,7 @@
             <div class="evolution-layout">
               <div class="frame-stage" id="frameStage">
                 <img id="evolutionFrame" alt="Continuous script evolution frame" decoding="async">
-                <div class="frame-placeholder" id="framePlaceholder">Loading continuous script evolution frames…</div>
+                <div class="frame-placeholder" id="framePlaceholder" aria-hidden="true"></div>
                 <div class="frame-error" id="frameError" role="status" aria-live="polite"></div>
               </div>
               <aside class="side-panel" aria-label="Evolution playback controls">
@@ -869,9 +863,9 @@
           </div>
         </div>
         <div class="dataset-preview-grid" aria-label="Dataset figures">
-          <figure class="mini-figure" data-mini-srcs="./img/Bar.png|./img/fig_data_stats.png|./img/data_statistics.png"><div class="img-holder"><img alt="Dataset statistics chart" loading="lazy"><div class="missing-mini">Place <code>Bar.png</code> or <code>fig_data_stats.png</code> under <code>./img/</code>.</div></div><p><strong>Coverage statistics.</strong> Use the chart to explain why complete chains are scarce but pairwise evidence is abundant.</p></figure>
-          <figure class="mini-figure" data-mini-srcs="./img/contextual_features.png|./img/fig_contextual_features.png"><div class="img-holder"><img alt="Contextual feature construction diagram" loading="lazy"><div class="missing-mini">Place <code>contextual_features.png</code> under <code>./img/</code>.</div></div><p><strong>Feature construction.</strong> Show how visual, structural, semantic, contextual, and spatiotemporal signals enter the dataset.</p></figure>
-          <figure class="mini-figure" data-mini-srcs="./img/dataset_finegrained.png|./img/fine_grained_dataset.png"><div class="img-holder"><img alt="Fine-grained evolutionary trajectories" loading="lazy"><div class="missing-mini">Place <code>dataset_finegrained.png</code> under <code>./img/</code>.</div></div><p><strong>Fine-grained trajectories.</strong> Dense glyph figures should stay inspectable but compact, avoiding large blank spaces.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/Bar.png|./img/Bar.pdf|./img/fig_data_stats.png|./img/fig_data_stats.pdf|./img/data_statistics.png|./img/data_statistics.pdf"><div class="img-holder"><img alt="Dataset statistics chart" loading="lazy"><div class="missing-mini">Place <code>Bar.png</code>/<code>Bar.pdf</code> or <code>fig_data_stats.png</code>/<code>fig_data_stats.pdf</code> under <code>./img/</code>.</div></div><p><strong>Coverage statistics.</strong> Use the chart to explain why complete chains are scarce but pairwise evidence is abundant.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/contextual_features.png|./img/contextual_features.pdf|./img/fig_contextual_features.png|./img/fig_contextual_features.pdf"><div class="img-holder"><img alt="Contextual feature construction diagram" loading="lazy"><div class="missing-mini">Place <code>contextual_features.png</code> or <code>contextual_features.pdf</code> under <code>./img/</code>.</div></div><p><strong>Feature construction.</strong> Show how visual, structural, semantic, contextual, and spatiotemporal signals enter the dataset.</p></figure>
+          <figure class="mini-figure" data-mini-srcs="./img/dataset_finegrained.png|./img/dataset_finegrained.pdf|./img/fine_grained_dataset.png|./img/fine_grained_dataset.pdf"><div class="img-holder"><img alt="Fine-grained evolutionary trajectories" loading="lazy"><div class="missing-mini">Place <code>dataset_finegrained.png</code> or <code>dataset_finegrained.pdf</code> under <code>./img/</code>.</div></div><p><strong>Fine-grained trajectories.</strong> Dense glyph figures should stay inspectable but compact, avoiding large blank spaces.</p></figure>
         </div>
       </section>
 
@@ -984,7 +978,7 @@
   <div class="modal" id="figureModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-panel">
       <div class="modal-head"><div class="modal-title" id="modalTitle">Figure</div><button class="modal-close" type="button" id="modalClose">Close</button></div>
-      <div class="modal-body"><img id="modalImage" alt="Full scale manuscript figure"></div>
+      <div class="modal-body"><img id="modalImage" alt="Full scale manuscript figure"><object id="modalPdf" type="application/pdf" aria-label="Full scale PDF figure"></object></div>
     </div>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1025,25 +1019,89 @@
       items.forEach(item => observer.observe(item));
     }
 
-    function loadWithFallback(img, candidates, onSuccess, onFail) {
-      const sources = Array.isArray(candidates) ? candidates.filter(Boolean) : String(candidates || '').split('|').filter(Boolean);
-      let index = 0;
-      function tryNext() {
-        if (index >= sources.length) {
-          if (onFail) onFail(sources);
+    function isPdfSource(src) {
+      return /\.pdf(?:[?#].*)?$/i.test(src || '');
+    }
+
+    function expandSourceCandidates(candidates, options = {}) {
+      const raw = Array.isArray(candidates) ? candidates.filter(Boolean) : String(candidates || '').split('|').filter(Boolean);
+      if (options.imageOnly) return raw;
+      const expanded = [];
+      raw.forEach(src => {
+        if (!src || expanded.includes(src)) return;
+        expanded.push(src);
+        const pdf = src.replace(/\.(png|jpg|jpeg|webp|svg)$/i, '.pdf');
+        if (pdf !== src && !expanded.includes(pdf)) expanded.push(pdf);
+        const upperPdf = src.replace(/\.(png|jpg|jpeg|webp|svg)$/i, '.PDF');
+        if (upperPdf !== src && upperPdf !== pdf && !expanded.includes(upperPdf)) expanded.push(upperPdf);
+      });
+      return expanded;
+    }
+
+    function resourceExists(src) {
+      if (isPdfSource(src)) {
+        if (window.location.protocol === 'file:') return Promise.resolve(true);
+        return fetch(src, { method: 'HEAD', cache: 'no-store' })
+          .then(response => response.ok)
+          .catch(() => fetch(src, { method: 'GET', cache: 'no-store' }).then(response => response.ok).catch(() => false));
+      }
+      return new Promise(resolve => {
+        const probe = new Image();
+        probe.onload = () => resolve(true);
+        probe.onerror = () => resolve(false);
+        probe.src = src;
+      });
+    }
+
+    function ensurePdfObject(container) {
+      let object = container.querySelector('object.pdf-object');
+      if (!object) {
+        object = document.createElement('object');
+        object.className = 'pdf-object';
+        object.type = 'application/pdf';
+        object.setAttribute('aria-label', 'PDF figure preview');
+        container.appendChild(object);
+      }
+      return object;
+    }
+
+    async function loadWithFallback(img, candidates, onSuccess, onFail, options = {}) {
+      const sources = expandSourceCandidates(candidates, options);
+      const hostCard = img.closest('.figure-card, .mini-figure');
+      const container = img.parentElement;
+      if (hostCard) hostCard.classList.remove('loaded', 'loaded-image', 'loaded-pdf');
+      if (img) {
+        img.removeAttribute('src');
+        img.dataset.resolvedSrc = '';
+        img.dataset.mediaType = '';
+      }
+      const existingPdf = container?.querySelector('object.pdf-object');
+      if (existingPdf) existingPdf.removeAttribute('data');
+
+      for (const src of sources) {
+        const ok = await resourceExists(src);
+        if (!ok) continue;
+        if (isPdfSource(src)) {
+          const object = ensurePdfObject(container);
+          object.data = src;
+          object.dataset.resolvedSrc = src;
+          object.dataset.mediaType = 'pdf';
+          img.dataset.resolvedSrc = src;
+          img.dataset.mediaType = 'pdf';
+          if (hostCard) hostCard.classList.add('loaded', 'loaded-pdf');
+          if (onSuccess) onSuccess(src, 'pdf');
           return;
         }
-        const src = sources[index++];
-        const probe = new Image();
-        probe.onload = () => {
-          img.src = src;
-          img.dataset.resolvedSrc = src;
-          if (onSuccess) onSuccess(src);
-        };
-        probe.onerror = tryNext;
-        probe.src = src;
+        const pdfObject = container?.querySelector('object.pdf-object');
+        if (pdfObject) pdfObject.removeAttribute('data');
+        img.src = src;
+        img.dataset.resolvedSrc = src;
+        img.dataset.mediaType = 'image';
+        if (hostCard) hostCard.classList.add('loaded', 'loaded-image');
+        if (onSuccess) onSuccess(src, 'image');
+        return;
       }
-      tryNext();
+      if (onFail) onFail(sources);
     }
 
     const evolutionCharacters = [
@@ -1117,7 +1175,7 @@
             frameError.classList.add('visible');
           }
           $('#folderLabel').textContent = active.folders[0];
-        });
+        }, { imageOnly: true });
       }
       function preloadFrames(...frames) {
         frames.forEach(candidateFrame => {
@@ -1280,7 +1338,7 @@
               ${group.figures.map(fig => `
                 <article class="figure-card ${fig.className || ''}" data-srcs="${fig.src.join('|')}" data-title="${fig.title}">
                   <div class="figure-head"><b>FIG ${fig.n}</b><span>${fig.title}</span></div>
-                  <div class="figure-frame"><img alt="${fig.alt}" loading="lazy" decoding="async"><div class="missing-figure">Figure image not found.<code>${fig.src[0]}</code></div></div>
+                  <div class="figure-frame"><img alt="${fig.alt}" loading="lazy" decoding="async"><div class="missing-figure">Figure file not found.<code>${fig.src[0].replace(/\.(png|jpg|jpeg|webp|svg)$/i, ".png / .pdf")}</code></div></div>
                   <div class="figure-copy">${fig.copy}</div>
                   <div class="figure-actions"><button class="figure-action" type="button" data-full>Full scale</button><button class="figure-action" type="button" data-copy>Copy filename</button></div>
                 </article>
@@ -1300,6 +1358,7 @@
     function initFigureActions() {
       const modal = $('#figureModal');
       const modalImg = $('#modalImage');
+      const modalPdf = $('#modalPdf');
       const modalTitle = $('#modalTitle');
       const close = $('#modalClose');
       let lastFocus = null;
@@ -1307,11 +1366,20 @@
       function openModal(card) {
         const img = $('img', card);
         const src = img?.dataset.resolvedSrc || img?.src;
+        const type = img?.dataset.mediaType || (isPdfSource(src) ? 'pdf' : 'image');
         if (!src) { showToast('Export this figure to ./img/ first.'); return; }
         lastFocus = document.activeElement;
         modalTitle.textContent = card.dataset.title || 'Figure';
-        modalImg.src = src;
-        modalImg.alt = img.alt || 'Full scale figure';
+        modalImg.style.display = type === 'pdf' ? 'none' : 'block';
+        modalPdf.style.display = type === 'pdf' ? 'block' : 'none';
+        if (type === 'pdf') {
+          modalPdf.data = src;
+          modalImg.removeAttribute('src');
+        } else {
+          modalImg.src = src;
+          modalImg.alt = img.alt || 'Full scale figure';
+          modalPdf.removeAttribute('data');
+        }
         modal.classList.add('open');
         modal.setAttribute('aria-hidden', 'false');
         close.focus();
@@ -1320,6 +1388,7 @@
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         modalImg.removeAttribute('src');
+        modalPdf.removeAttribute('data');
         if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
       }
       document.addEventListener('click', event => {
@@ -1328,7 +1397,8 @@
         if (full) openModal(full.closest('.figure-card'));
         if (copy) {
           const card = copy.closest('.figure-card');
-          const first = (card.dataset.srcs || '').split('|')[0] || '';
+          const resolved = $('img', card)?.dataset.resolvedSrc || '';
+          const first = resolved || (card.dataset.srcs || '').split('|')[0] || '';
           navigator.clipboard?.writeText(first.replace('./img/', '')).then(() => showToast('Filename copied.'), () => showToast(first.replace('./img/', '')));
         }
       });
