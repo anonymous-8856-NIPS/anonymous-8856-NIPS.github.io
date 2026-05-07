@@ -13,8 +13,8 @@
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;f[]=clash-display@500,600,700&amp;f[]=sentient@400,500,600,700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cormorant+Unicase:wght@500;600;700&amp;family=IM+Fell+English:ital@0;1&amp;family=Marcellus&amp;family=Mea+Culpa&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,ital,wght@6..96,1,500..800&amp;family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&amp;family=Playfair+Display:ital,wght@1,500..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&amp;family=Imperial+Script&amp;family=Luxurious+Script&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
@@ -5296,76 +5296,138 @@ body::before {
         }
 
 
-        /* Requested final title treatment: antique aristocratic floral English, readable; all other typography/layout unchanged. */
+        /* Reference-style paper title:
+           similar to the example: elegant high-contrast serif, blue gradient emphasis,
+           and a readable italic floral serif only where the title already uses emphasis spans. */
         :root {
-            --font-paper-title-floral-final: 'Pinyon Script', 'Imperial Script', 'Luxurious Script', 'Cormorant Garamond', Georgia, serif;
-            --paper-title-ivory: #fff8e8;
-            --paper-title-gold: #d6b56d;
-            --paper-title-shadow: rgba(78, 40, 10, 0.34);
+            --paper-title-ref-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --paper-title-ref-italic: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
         }
 
+        .hero h1.hero-title-balanced,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced {
+            font-family: var(--paper-title-ref-serif) !important;
+            font-style: normal !important;
+            font-weight: 600 !important;
+            font-size: clamp(4.0rem, 7.4vw, 8.15rem) !important;
+            line-height: 0.88 !important;
+            letter-spacing: -0.065em !important;
+            text-transform: none !important;
+            max-width: 1080px !important;
+            margin-inline: auto !important;
+            color: #f4f6ff !important;
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+            text-shadow:
+                0 14px 42px rgba(0,0,0,0.46),
+                0 0 22px rgba(84,146,255,0.12) !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+        }
+
+        .hero-title-balanced span {
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            letter-spacing: inherit !important;
+            line-height: inherit !important;
+            text-transform: none !important;
+        }
+
+        .hero-title-balanced .title-emphasis-main {
+            font-family: var(--paper-title-ref-serif) !important;
+            font-style: normal !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.07em !important;
+            background: linear-gradient(90deg, #7082ff 0%, #45c9ff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: none !important;
+        }
+
+        .hero-title-balanced .title-emphasis-sub {
+            font-family: var(--paper-title-ref-italic) !important;
+            font-style: italic !important;
+            font-weight: 600 !important;
+            letter-spacing: -0.065em !important;
+            background: linear-gradient(90deg, #24e6ff 0%, #19c8ff 58%, #7a8cff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: none !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero h1.hero-title-balanced,
+            .hero-restored h1.hero-title-balanced,
+            .hero-title-balanced {
+                font-size: clamp(3.2rem, 14vw, 5.25rem) !important;
+                line-height: 0.94 !important;
+                letter-spacing: -0.055em !important;
+                max-width: 94vw !important;
+            }
+
+            .hero-title-balanced .title-emphasis-main,
+            .hero-title-balanced .title-emphasis-sub {
+                letter-spacing: -0.055em !important;
+            }
+        }
+
+
+        /* Final requested title font:
+           Paper title uses Instrument Serif. Other headings keep the normal premium serif system. */
         .hero h1.hero-title-balanced,
         .hero-restored h1.hero-title-balanced,
         .hero-title-balanced,
         .hero-title-balanced span,
         .hero-title-balanced .title-emphasis-main,
         .hero-title-balanced .title-emphasis-sub {
-            font-family: var(--font-paper-title-floral-final) !important;
-            font-style: normal !important;
+            font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif !important;
             font-weight: 400 !important;
-            letter-spacing: 0.012em !important;
-            line-height: 1.04 !important;
+            letter-spacing: -0.045em !important;
+            line-height: 0.93 !important;
             text-transform: none !important;
-            font-variant-ligatures: common-ligatures discretionary-ligatures !important;
-            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1, 'swsh' 1 !important;
-            color: var(--paper-title-ivory) !important;
-            -webkit-text-fill-color: var(--paper-title-ivory) !important;
-            text-shadow:
-                0 1px 0 rgba(255,255,255,0.22),
-                0 10px 24px var(--paper-title-shadow),
-                0 26px 68px rgba(0,0,0,0.42) !important;
-            text-wrap: balance;
+            font-feature-settings: 'kern' 1, 'liga' 1;
         }
 
         .hero-title-balanced {
-            font-size: clamp(3.45rem, 7.35vw, 7.75rem) !important;
-            max-width: 1140px !important;
+            font-size: clamp(4.0rem, 7.25vw, 7.8rem) !important;
+            max-width: 1080px !important;
             margin-inline: auto !important;
+            color: #f5f7ff !important;
+            background: none !important;
+            -webkit-text-fill-color: initial !important;
+            text-shadow:
+                0 14px 42px rgba(0,0,0,0.45),
+                0 0 20px rgba(84,146,255,0.10) !important;
         }
 
-        .hero-title-balanced span {
-            transform: translateZ(0);
-        }
-
-        .hero-title-balanced span {
-            display: block !important;
-            margin-block: -0.03em !important;
-        }
-
-        .hero-title-balanced span:nth-child(1),
-        .hero-title-balanced span:nth-child(2),
-        .hero-title-balanced span:nth-child(3) {
-            filter: drop-shadow(0 9px 20px rgba(214,181,109,0.08));
-        }
-
-        .hero-title-balanced .title-emphasis-main,
-        .hero-title-balanced .title-emphasis-sub {
-            background: linear-gradient(100deg, #fffaf0 0%, var(--paper-title-gold) 48%, #fff2c2 100%) !important;
+        .hero-title-balanced .title-emphasis-main {
+            font-style: normal !important;
+            background: linear-gradient(90deg, #7b8dff 0%, #3fcaff 100%) !important;
             -webkit-background-clip: text !important;
-            background-clip: text !important;
-            color: transparent !important;
             -webkit-text-fill-color: transparent !important;
-            filter: drop-shadow(0 14px 28px rgba(214,181,109,0.12));
+            background-clip: text !important;
+            text-shadow: none !important;
+        }
+
+        .hero-title-balanced .title-emphasis-sub {
+            font-style: italic !important;
+            background: linear-gradient(90deg, #20e7ff 0%, #2fcaff 58%, #8c9bff 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            background-clip: text !important;
+            text-shadow: none !important;
         }
 
         @media (max-width: 760px) {
-            .hero-title-balanced,
-            .hero-title-balanced span,
-            .hero-title-balanced .title-emphasis-main,
-            .hero-title-balanced .title-emphasis-sub {
-                font-size: clamp(3rem, 14vw, 4.8rem) !important;
-                line-height: 1.08 !important;
-                letter-spacing: 0.006em !important;
+            .hero h1.hero-title-balanced,
+            .hero-restored h1.hero-title-balanced,
+            .hero-title-balanced {
+                font-size: clamp(3.1rem, 13.5vw, 5.1rem) !important;
+                line-height: 0.98 !important;
+                letter-spacing: -0.04em !important;
+                max-width: 94vw !important;
             }
         }
 
