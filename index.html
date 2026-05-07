@@ -8,7 +8,7 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
@@ -3878,6 +3878,114 @@ body::before {
             }
         }
 
+
+
+        /* Batch2 deployment hotfix: image diagnostics, normal font rendering, updated GitHub Pages typography. */
+        .frame-error-message {
+            position: absolute;
+            inset: auto 1rem 1rem 1rem;
+            z-index: 8;
+            display: none;
+            flex-direction: column;
+            gap: 0.32rem;
+            padding: 0.9rem 1rem;
+            border-radius: 16px;
+            border: 1px solid rgba(248, 113, 113, 0.42);
+            background: rgba(15, 15, 26, 0.86);
+            color: rgba(255,255,255,0.92);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.32);
+            backdrop-filter: blur(14px);
+            font-family: 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.88rem;
+            line-height: 1.45;
+            text-align: left;
+        }
+
+        .frame-error-message.visible { display: flex; }
+        .frame-error-message strong { color: #fecaca; }
+        .frame-error-message code {
+            font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            color: #bfdbfe;
+            background: rgba(255,255,255,0.08);
+            border-radius: 5px;
+            padding: 0.05rem 0.28rem;
+        }
+        .frame-error-path { color: rgba(234,234,234,0.72); }
+
+        html,
+        body {
+            font-family: 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+            font-stretch: normal !important;
+            letter-spacing: normal !important;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body,
+        p,
+        li,
+        td,
+        th,
+        a,
+        button,
+        input,
+        select,
+        .hero-subtitle,
+        .section-desc,
+        .abstract-text,
+        .stage-copy,
+        .caption-card p,
+        .demo-card-copy,
+        .lab-subtitle,
+        .benchmark-subtitle,
+        .matrix-footnote,
+        .diagnostic-panel p {
+            font-family: 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif !important;
+            font-stretch: normal !important;
+            letter-spacing: normal !important;
+        }
+
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title {
+            font-family: 'Source Serif 4', 'Instrument Serif', Georgia, 'Times New Roman', serif !important;
+            font-stretch: normal !important;
+            letter-spacing: -0.018em !important;
+            text-wrap: balance;
+        }
+
+        .hero-restored h1.hero-title-balanced {
+            line-height: 0.98 !important;
+            max-width: 1180px !important;
+        }
+
+        .hero-title-balanced span {
+            font-stretch: normal !important;
+        }
+
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .metric-name,
+        .live-readout span,
+        .mini-metric small,
+        .boundary-scrub label,
+        .boundary-readout span {
+            font-stretch: normal !important;
+            letter-spacing: 0.08em !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero-title-balanced span { white-space: normal !important; }
+            .frame-error-message { inset: auto 0.75rem 0.75rem 0.75rem; font-size: 0.8rem; }
+        }
+
 </style>
 </head>
 <body>
@@ -3904,7 +4012,7 @@ body::before {
 <p class="hero-subtitle">TSCD formulates the weakness of Forward-Forward learning as an error decomposition: local goodness loses information near decision boundaries, while zero-order forward updates introduce variance and curvature-induced bias. Tri-stream coupled dynamics preserves discriminative state differences and stabilizes the estimator without reverting to global backpropagation.</p>
 <div class="hero-links">
 <a class="btn btn-primary" href="#">Paper</a>
-<a class="btn btn-secondary" href="https://github.com/anonymous-1341-icml/anonymous-1341-icml">Code</a>
+<a class="btn btn-secondary" href="https://github.com/anonymous-8856-NIPS/anonymous-8856-NIPS">Code</a>
 <a class="btn btn-secondary" href="#citation">Citation</a>
 </div>
 </div>
@@ -4231,6 +4339,11 @@ body::before {
 <div class="landscape-grid">
 <div class="frame-stage" id="frameStage">
 <img alt="Optimization path comparison between standard FF and TSCD" id="landscapeFrame" src="./img/frame_000.png"/>
+<div class="frame-error-message" id="landscapeFrameError" role="alert" aria-live="polite">
+<strong>Trajectory frames not found.</strong>
+<span>Put the images under <code>./img/</code> with names <code>frame_000.png</code> through <code>frame_119.png</code>.</span>
+<span class="frame-error-path">Current expected path: <code>./img/frame_000.png</code></span>
+</div>
 <div class="annotation-pin ff-pin">FF local basin</div>
 <div class="annotation-pin tscd-pin">TSCD search front</div>
 <div class="annotation-pin global-pin">global basin emerges</div>
@@ -4424,7 +4537,7 @@ body::before {
 </div>
 </section>
 <!-- Footer -->
-<footer><p>Tri-Stream Coupled Dynamics · Forward Learning under Information and Approximation Error</p><p style="margin-top: 0.5rem;"><a href="https://github.com/anonymous-1341-icml/anonymous-1341-icml">Code repository</a></p></footer>
+<footer><p>Tri-Stream Coupled Dynamics · Forward Learning under Information and Approximation Error</p><p style="margin-top: 0.5rem;"><a href="https://github.com/anonymous-8856-NIPS/anonymous-8856-NIPS">Code repository</a></p></footer>
 <script>
 
 
@@ -4592,6 +4705,27 @@ body::before {
         let landscapeTimer = null;
         let annotationsVisible = true;
 
+        function landscapeExpectedPath(index = 0) {
+            const safeIndex = Math.max(0, Math.min(LANDSCAPE_FRAME_MAX, Number(index) || 0));
+            return `${LANDSCAPE_FRAME_DIR}/frame_${String(safeIndex).padStart(3, '0')}.png`;
+        }
+
+        function showLandscapeFrameError(src) {
+            const error = document.getElementById('landscapeFrameError');
+            if (!error) return;
+            const current = src || landscapeExpectedPath(0);
+            error.classList.add('visible');
+            error.innerHTML = `
+                <strong>Trajectory frames not found.</strong>
+                <span>Put the images under <code>./img/</code> with names <code>frame_000.png</code> through <code>frame_119.png</code>.</span>
+                <span class="frame-error-path">Current expected path: <code>${current}</code></span>
+            `;
+        }
+
+        function hideLandscapeFrameError() {
+            document.getElementById('landscapeFrameError')?.classList.remove('visible');
+        }
+
         function landscapeStageFor(index) {
             const bucket = Math.min(landscapeCopy.length - 1, Math.floor(index / LANDSCAPE_FRAME_COUNT * landscapeCopy.length));
             return landscapeCopy[bucket];
@@ -4606,7 +4740,10 @@ body::before {
             const p = safeIndex / LANDSCAPE_FRAME_MAX;
             slider.value = safeIndex;
             stage.classList.add('frame-changing');
-            frame.src = landscapeFrames[safeIndex];
+            const nextSrc = landscapeFrames[safeIndex] || landscapeExpectedPath(safeIndex);
+            frame.onerror = () => showLandscapeFrameError(nextSrc);
+            frame.onload = hideLandscapeFrameError;
+            frame.src = nextSrc;
             warmLandscapeFrames(safeIndex);
             window.setTimeout(() => stage.classList.remove('frame-changing'), 160);
 
@@ -4659,7 +4796,13 @@ body::before {
 
         function setupLandscapeDemo() {
             const slider = document.getElementById('landscapeSlider');
+            const frame = document.getElementById('landscapeFrame');
             if (!slider) return;
+            slider.max = String(LANDSCAPE_FRAME_MAX);
+            if (frame) {
+                frame.onerror = () => showLandscapeFrameError(frame.getAttribute('src') || landscapeExpectedPath(0));
+                frame.onload = hideLandscapeFrameError;
+            }
             setLandscapeFrame(0);
             slider.addEventListener('input', (e) => setLandscapeFrame(e.target.value));
             slider.addEventListener('keydown', (e) => {
