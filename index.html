@@ -8,7 +8,10 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Source+Sans+3:wght@300;400;500;600;700&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..800,40..100,0..1&amp;family=Manrope:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400;500;600;700&amp;family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&amp;f[]=clash-display@500,600,700&amp;f[]=sentient@400,500,600,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=Cormorant+Unicase:wght@500;600;700&amp;family=IM+Fell+English:ital@0;1&amp;family=Marcellus&amp;family=Mea+Culpa&amp;display=swap" rel="stylesheet"/>
 <!-- Icons -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" rel="stylesheet"/>
@@ -3986,6 +3989,1158 @@ body::before {
             .frame-error-message { inset: auto 0.75rem 0.75rem 0.75rem; font-size: 0.8rem; }
         }
 
+
+        /* Batch2 polish patch: premium typography + viewport autoplay affordances. */
+        :root {
+            --font-body-premium: 'Manrope', 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-display-premium: 'Fraunces', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-mono-premium: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        html,
+        body,
+        p,
+        li,
+        td,
+        th,
+        a,
+        button,
+        input,
+        select,
+        .hero-subtitle,
+        .section-desc,
+        .abstract-text,
+        .stage-copy,
+        .caption-card p,
+        .demo-card-copy,
+        .lab-subtitle,
+        .benchmark-subtitle,
+        .matrix-footnote,
+        .diagnostic-panel p {
+            font-family: var(--font-body-premium) !important;
+            font-stretch: normal !important;
+            letter-spacing: -0.006em !important;
+            line-height: 1.68;
+        }
+
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title {
+            font-family: var(--font-display-premium) !important;
+            font-weight: 680 !important;
+            font-variation-settings: 'SOFT' 72, 'WONK' 1;
+            letter-spacing: -0.04em !important;
+            text-wrap: balance;
+        }
+
+        h3,
+        h4,
+        .stage-headline,
+        .demo-card-title,
+        .claim-body h3,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4 {
+            font-family: var(--font-body-premium) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.032em !important;
+            line-height: 1.14;
+        }
+
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .metric-name,
+        .metric-value,
+        .live-readout span,
+        .mini-metric small,
+        .boundary-scrub label,
+        .boundary-readout span,
+        .boundary-note,
+        .stage-pill,
+        .control-labels,
+        .timeline-landmarks,
+        .signal-strength-row strong,
+        .boundary-scrub output {
+            font-family: var(--font-mono-premium) !important;
+            font-stretch: normal !important;
+        }
+
+        .boundary-signal-panel {
+            max-width: 980px;
+            background:
+                radial-gradient(circle at 12% 0%, rgba(248,113,113,0.14), transparent 30%),
+                radial-gradient(circle at 94% 8%, rgba(79,172,254,0.16), transparent 35%),
+                linear-gradient(135deg, rgba(34,34,56,0.94), rgba(10,11,22,0.985));
+            box-shadow: 0 28px 80px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,255,255,0.085);
+        }
+
+        .boundary-signal-panel.auto-running,
+        .landscape-lab.autoplay-active {
+            border-color: rgba(139, 211, 255, 0.34) !important;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.42), 0 0 0 1px rgba(139,211,255,0.12), inset 0 1px 0 rgba(255,255,255,0.09) !important;
+        }
+
+        .boundary-signal-panel.auto-running .boundary-range::-webkit-slider-thumb,
+        .landscape-lab.autoplay-active .scrub-slider::-webkit-slider-thumb {
+            box-shadow: 0 0 0 8px rgba(79,172,254,0.18), 0 0 28px rgba(139,211,255,0.38), 0 12px 28px rgba(0,0,0,0.34) !important;
+        }
+
+        .boundary-signal-panel.auto-running .boundary-range::-moz-range-thumb,
+        .landscape-lab.autoplay-active .scrub-slider::-moz-range-thumb {
+            box-shadow: 0 0 0 8px rgba(79,172,254,0.18), 0 0 28px rgba(139,211,255,0.38), 0 12px 28px rgba(0,0,0,0.34) !important;
+        }
+
+        .boundary-readout {
+            display: grid;
+            gap: 0.45rem;
+            justify-items: end;
+        }
+
+        .boundary-auto-button {
+            width: fit-content;
+            border: 1px solid rgba(139,211,255,0.28);
+            border-radius: 999px;
+            padding: 0.38rem 0.68rem;
+            color: #dff5ff;
+            background: rgba(139,211,255,0.10);
+            font-family: var(--font-body-premium) !important;
+            font-size: 0.72rem;
+            font-weight: 800;
+            line-height: 1;
+            cursor: pointer;
+            transition: transform .2s ease, background .2s ease, border-color .2s ease;
+        }
+
+        .boundary-auto-button:hover {
+            transform: translateY(-1px);
+            background: rgba(139,211,255,0.16);
+            border-color: rgba(139,211,255,0.46);
+        }
+
+        .lab-button.primary,
+        .boundary-auto-button[aria-pressed="true"] {
+            background: linear-gradient(135deg, #e94560 0%, #a855f7 100%);
+            color: #fff;
+        }
+
+        .control-labels #progressLabel {
+            min-width: 4.5rem;
+            text-align: right;
+            color: #eafaff;
+            font-weight: 700;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .boundary-signal-panel.auto-running,
+            .landscape-lab.autoplay-active {
+                box-shadow: 0 24px 70px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.07) !important;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .boundary-readout { justify-items: start; }
+        }
+
+
+
+        /* Batch2 auto-orchestration patch: every interactive demo can preview itself, then yields control on human input. */
+        .formula-lab.auto-demo-running,
+        .glass-demo-card.auto-demo-running,
+        .benchmark-matrix.auto-demo-running,
+        .diagnostic-grid.auto-demo-running {
+            border-color: rgba(139, 211, 255, 0.32) !important;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.40), 0 0 0 1px rgba(139,211,255,0.12), inset 0 1px 0 rgba(255,255,255,0.09) !important;
+        }
+
+        .formula-lab.auto-demo-running .formula-step.active,
+        .glass-demo-card.auto-demo-running .phase-btn.active,
+        .benchmark-matrix.auto-demo-running .demo-select,
+        .diagnostic-grid.auto-demo-running .budget-tab.active {
+            box-shadow: 0 0 0 1px rgba(139,211,255,0.22), 0 12px 34px rgba(79,172,254,0.14) !important;
+        }
+
+        .formula-lab.auto-demo-running .formula-step.active::after,
+        .glass-demo-card.auto-demo-running .phase-btn.active::after,
+        .diagnostic-grid.auto-demo-running .budget-tab.active::after {
+            content: 'auto';
+            margin-left: .55rem;
+            font-family: var(--font-mono-premium) !important;
+            font-size: .62rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #8bd3ff;
+            opacity: .86;
+        }
+
+        .glass-demo-card.auto-demo-running .neon-range::-webkit-slider-thumb,
+        .benchmark-matrix.auto-demo-running .demo-select:focus {
+            box-shadow: 0 0 0 7px rgba(79,172,254,0.16), 0 0 24px rgba(139,211,255,0.34), 0 10px 24px rgba(0,0,0,0.28) !important;
+        }
+
+        .glass-demo-card.auto-demo-running .neon-range::-moz-range-thumb {
+            box-shadow: 0 0 0 7px rgba(79,172,254,0.16), 0 0 24px rgba(139,211,255,0.34), 0 10px 24px rgba(0,0,0,0.28) !important;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .formula-lab.auto-demo-running,
+            .glass-demo-card.auto-demo-running,
+            .benchmark-matrix.auto-demo-running,
+            .diagnostic-grid.auto-demo-running {
+                box-shadow: 0 24px 70px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.07) !important;
+            }
+        }
+
+
+        /* Batch2 luxe typography patch: less common editorial / premium font system.
+           Uses CDN webfonts only; no font files are embedded in the repo. */
+        :root {
+            --font-body-premium: 'Satoshi', 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-display-premium: 'Sentient', 'Ibarra Real Nova', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-ui-premium: 'Clash Display', 'Satoshi', 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono-premium: 'Azeret Mono', 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        html,
+        body {
+            font-family: var(--font-body-premium) !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'ss01' 1;
+            font-kerning: normal;
+            font-synthesis: none;
+            text-rendering: geometricPrecision;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body,
+        p,
+        li,
+        td,
+        th,
+        a,
+        input,
+        select,
+        textarea,
+        .hero-subtitle,
+        .section-desc,
+        .abstract-text,
+        .stage-copy,
+        .caption-card p,
+        .demo-card-copy,
+        .lab-subtitle,
+        .benchmark-subtitle,
+        .matrix-footnote,
+        .diagnostic-panel p,
+        .stream-desc,
+        .problem-card p,
+        .opt-body p,
+        .claim-body p,
+        .formula-board p,
+        .evidence-card p {
+            font-family: var(--font-body-premium) !important;
+            font-weight: 450 !important;
+            letter-spacing: -0.014em !important;
+            line-height: 1.72 !important;
+        }
+
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title {
+            font-family: var(--font-display-premium) !important;
+            font-weight: 560 !important;
+            letter-spacing: -0.058em !important;
+            line-height: 0.96 !important;
+            font-variation-settings: normal !important;
+            text-wrap: balance;
+        }
+
+        .hero-title-balanced .accent-word,
+        .hero h1 em,
+        .section-title em {
+            font-family: var(--font-display-premium) !important;
+            font-style: italic;
+            letter-spacing: -0.045em !important;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        button,
+        .btn,
+        .lab-button,
+        .boundary-auto-button,
+        .tab-btn,
+        .claim-tab,
+        .formula-step strong,
+        .stage-headline,
+        .demo-card-title,
+        .claim-body h3,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .problem-card h3,
+        .opt-body h3,
+        .stream-title,
+        .nav-logo {
+            font-family: var(--font-ui-premium) !important;
+            font-weight: 650 !important;
+            letter-spacing: -0.028em !important;
+            line-height: 1.08 !important;
+        }
+
+        .hero-badge,
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .metric-name,
+        .metric-value,
+        .stat-label,
+        .stat-value,
+        .live-readout span,
+        .live-readout strong,
+        .mini-metric small,
+        .mini-metric strong,
+        .boundary-scrub label,
+        .boundary-readout span,
+        .boundary-note,
+        .stage-pill,
+        .stage-pill *,
+        .control-labels,
+        .timeline-landmarks,
+        .signal-strength-row strong,
+        .boundary-scrub output,
+        .waterfall-value,
+        .waterfall-label,
+        .formula-eyebrow,
+        .formula-step small,
+        .demo-watermark,
+        .annotation-pin,
+        .citation-box,
+        .citation-box pre,
+        code,
+        pre {
+            font-family: var(--font-mono-premium) !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.045em !important;
+            font-variant-ligatures: none;
+        }
+
+        .hero-subtitle,
+        .section-desc,
+        .lab-subtitle,
+        .demo-card-copy {
+            color: rgba(234, 234, 234, 0.66) !important;
+            letter-spacing: -0.018em !important;
+        }
+
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow {
+            letter-spacing: 0.115em !important;
+            text-transform: uppercase;
+        }
+
+        .metric-value,
+        .live-readout strong,
+        .mini-metric strong,
+        .stat-value,
+        .boundary-scrub output,
+        .signal-strength-row strong {
+            letter-spacing: -0.02em !important;
+            font-weight: 650 !important;
+        }
+
+        .nav-links a,
+        .tab-btn,
+        .claim-tab,
+        .phase-btn,
+        .lab-button,
+        .btn {
+            font-family: var(--font-ui-premium) !important;
+            font-weight: 650 !important;
+        }
+
+        .hero-restored h1.hero-title-balanced {
+            max-width: 1220px !important;
+        }
+
+        .section-title {
+            max-width: 980px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (max-width: 760px) {
+            .hero h1,
+            .hero-restored h1,
+            .hero-title-balanced,
+            .section-title,
+            .lab-title,
+            .benchmark-title {
+                letter-spacing: -0.038em !important;
+                line-height: 1.02 !important;
+            }
+
+            body,
+            p,
+            li,
+            .section-desc,
+            .hero-subtitle,
+            .lab-subtitle,
+            .demo-card-copy {
+                letter-spacing: -0.006em !important;
+            }
+        }
+
+
+
+        /* Batch2 ornamental English typography patch: decorative English headings, readable body. */
+        :root {
+            --font-body-premium: 'Marcellus', 'Satoshi', 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-display-premium: 'Cinzel Decorative', 'IM Fell English', 'Sentient', 'Ibarra Real Nova', Georgia, serif;
+            --font-ui-premium: 'Cormorant Unicase', 'Clash Display', 'Satoshi', 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-english-script: 'Mea Culpa', 'IM Fell English', 'Cinzel Decorative', cursive;
+            --font-mono-premium: 'Azeret Mono', 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        body,
+        p,
+        li,
+        td,
+        th,
+        a,
+        input,
+        select,
+        textarea,
+        .hero-subtitle,
+        .section-desc,
+        .abstract-text,
+        .stage-copy,
+        .caption-card p,
+        .demo-card-copy,
+        .lab-subtitle,
+        .benchmark-subtitle,
+        .matrix-footnote,
+        .diagnostic-panel p,
+        .stream-desc,
+        .problem-card p,
+        .opt-body p,
+        .claim-body p,
+        .formula-board p,
+        .evidence-card p {
+            font-family: var(--font-body-premium) !important;
+            font-weight: 400 !important;
+            letter-spacing: -0.006em !important;
+            line-height: 1.74 !important;
+        }
+
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced {
+            font-family: var(--font-display-premium) !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.025em !important;
+            line-height: 1.02 !important;
+            text-transform: none;
+            text-shadow: 0 1px 0 rgba(255,255,255,0.12), 0 26px 60px rgba(0,0,0,0.35);
+        }
+
+        .hero-title-balanced span {
+            font-family: var(--font-display-premium) !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+        }
+
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub {
+            font-family: var(--font-english-script) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.005em !important;
+            line-height: 0.86 !important;
+            background: linear-gradient(135deg, #fff7ed 0%, #f9a8d4 36%, #93c5fd 78%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 12px 28px rgba(233,69,96,0.20));
+        }
+
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title,
+        .formula-board h3 {
+            font-family: var(--font-display-premium) !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.018em !important;
+            line-height: 1.04 !important;
+            text-transform: none;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        button,
+        .btn,
+        .lab-button,
+        .boundary-auto-button,
+        .tab-btn,
+        .claim-tab,
+        .formula-step strong,
+        .stage-headline,
+        .demo-card-title,
+        .claim-body h3,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .problem-card h3,
+        .opt-body h3,
+        .stream-title,
+        .nav-logo,
+        .thesis-chip {
+            font-family: var(--font-ui-premium) !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.006em !important;
+            line-height: 1.08 !important;
+        }
+
+        .hero-badge,
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .stat-label {
+            font-family: var(--font-ui-premium) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.115em !important;
+            text-transform: uppercase;
+        }
+
+        .stat-value,
+        .metric-name,
+        .metric-value,
+        .live-readout span,
+        .live-readout strong,
+        .mini-metric small,
+        .mini-metric strong,
+        .boundary-scrub label,
+        .boundary-readout span,
+        .boundary-note,
+        .control-labels,
+        .timeline-landmarks,
+        .signal-strength-row strong,
+        .boundary-scrub output,
+        .waterfall-value,
+        .waterfall-label,
+        .formula-step small,
+        .demo-watermark,
+        .annotation-pin,
+        .citation-box,
+        .citation-box pre,
+        code,
+        pre {
+            font-family: var(--font-mono-premium) !important;
+            font-weight: 500 !important;
+            letter-spacing: 0.036em !important;
+            font-variant-ligatures: none;
+        }
+
+        .nav-links a,
+        .phase-btn,
+        .lab-button,
+        .btn,
+        .tab-btn,
+        .claim-tab {
+            font-family: var(--font-ui-premium) !important;
+            letter-spacing: 0.01em !important;
+        }
+
+        .hero-badge::before,
+        .section-tag::before,
+        .section-tag::after {
+            font-family: var(--font-english-script) !important;
+            font-weight: 400 !important;
+        }
+
+        .hero-subtitle,
+        .section-desc,
+        .lab-subtitle,
+        .demo-card-copy {
+            color: rgba(234, 234, 234, 0.68) !important;
+            letter-spacing: -0.004em !important;
+        }
+
+        .btn,
+        .lab-button,
+        .boundary-auto-button,
+        .phase-btn,
+        .tab-btn,
+        .claim-tab {
+            border-radius: 999px !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero h1,
+            .hero-restored h1,
+            .hero-title-balanced,
+            .section-title,
+            .lab-title,
+            .benchmark-title {
+                letter-spacing: -0.012em !important;
+                line-height: 1.08 !important;
+            }
+
+            .hero-title-balanced .title-emphasis-main,
+            .hero-title-balanced .title-emphasis-sub {
+                line-height: 0.95 !important;
+            }
+        }
+
+
+        /* Fancy-English title pass: make every visible title ornamental while keeping body readable. */
+        :root {
+            --font-title-fancy: 'Cinzel Decorative', 'IM Fell English', Georgia, serif;
+            --font-title-fancy-alt: 'Cormorant Unicase', 'Cinzel Decorative', 'IM Fell English', Georgia, serif;
+            --font-title-script: 'Mea Culpa', 'IM Fell English', cursive;
+        }
+
+        h1,
+        h2,
+        h1:not(.hero-title-balanced),
+        h2:not(.section-title),
+        h3,
+        h4,
+        h5,
+        h6,
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title,
+        .formula-board h3,
+        .claim-body h3,
+        .stage-headline,
+        .demo-card-title,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .problem-card h3,
+        .opt-body h3,
+        .demo-title,
+        .stream-title,
+        .neuron-formula h4,
+        .compare-card h4,
+        .formula-step strong,
+        .evidence-card h4,
+        .claim-tab,
+        .claim-tab span,
+        .nav-logo {
+            font-family: var(--font-title-fancy) !important;
+            font-weight: 700 !important;
+            font-variant-ligatures: common-ligatures discretionary-ligatures;
+            font-feature-settings: 'liga' 1, 'dlig' 1, 'kern' 1;
+            letter-spacing: 0.018em !important;
+            text-transform: none;
+        }
+
+        .hero-title-balanced,
+        .hero-title-balanced span,
+        .section-title,
+        .lab-title,
+        .benchmark-title {
+            font-family: var(--font-title-fancy) !important;
+            font-weight: 900 !important;
+            letter-spacing: 0.006em !important;
+            line-height: 1.02 !important;
+            text-shadow: 0 18px 48px rgba(0,0,0,0.35), 0 0 28px rgba(233,69,96,0.08);
+        }
+
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub,
+        .title-emphasis-main,
+        .title-emphasis-sub {
+            font-family: var(--font-title-script) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.005em !important;
+            text-transform: none !important;
+            line-height: 0.9 !important;
+            text-shadow: 0 16px 42px rgba(233,69,96,0.18), 0 0 1px rgba(255,255,255,0.18);
+        }
+
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .claim-tab span,
+        .hero-badge,
+        .opt-badge,
+        .stage-pill,
+        .boundary-readout span,
+        .metric-name,
+        .stream-label,
+        .timeline-landmarks span,
+        .control-labels,
+        .boundary-scrub label,
+        .waterfall-label {
+            font-family: var(--font-title-fancy-alt) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.14em !important;
+            text-transform: uppercase;
+        }
+
+        .demo-card-title,
+        .stage-headline,
+        .formula-board h3,
+        .boundary-signal-head h3,
+        .claim-body h3,
+        .problem-card h3,
+        .opt-body h3 {
+            font-family: var(--font-title-fancy-alt) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.03em !important;
+            line-height: 1.12 !important;
+        }
+
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .stream-title,
+        .formula-step strong,
+        .evidence-card h4,
+        .compare-card h4,
+        .neuron-formula h4,
+        .demo-title {
+            font-family: var(--font-title-fancy-alt) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.055em !important;
+            line-height: 1.16 !important;
+        }
+
+        .nav-links a,
+        .btn,
+        .lab-button,
+        .phase-btn,
+        .claim-tab,
+        .tab-btn,
+        .boundary-auto-button {
+            font-family: var(--font-title-fancy-alt) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.06em !important;
+        }
+
+        .metric-value,
+        .live-readout strong,
+        .mini-metric strong,
+        .stat-value,
+        .waterfall-value,
+        .signal-strength-row strong,
+        .boundary-scrub output,
+        #progressLabel,
+        #frameLabel {
+            font-family: 'Azeret Mono', 'IBM Plex Mono', 'JetBrains Mono', monospace !important;
+            letter-spacing: 0.01em !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero-title-balanced,
+            .hero-title-balanced span,
+            .section-title,
+            .lab-title,
+            .benchmark-title {
+                letter-spacing: 0.002em !important;
+                line-height: 1.08 !important;
+            }
+
+            .title-emphasis-main,
+            .title-emphasis-sub {
+                line-height: 0.98 !important;
+            }
+        }
+
+
+        /* Final typography correction: use the same flowing script style as the hero “Tri-Stream Coupled Dynamics” text for titles. */
+        :root {
+            --font-title-script-final: 'Mea Culpa', 'IM Fell English', 'Cinzel Decorative', cursive;
+            --font-title-small-final: 'Cormorant Unicase', 'IM Fell English', Georgia, serif;
+        }
+
+        /* Major page / section titles: same flower-script feeling as “Tri-Stream Coupled Dynamics.” */
+        h1,
+        h2,
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .hero-title-balanced span,
+        .section-title,
+        .section-header .section-title,
+        .lab-title,
+        .benchmark-title {
+            font-family: var(--font-title-script-final) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.01em !important;
+            line-height: 0.92 !important;
+            text-transform: none !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+            text-shadow: 0 18px 48px rgba(0,0,0,0.36), 0 0 24px rgba(233,69,96,0.10);
+        }
+
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub,
+        .title-emphasis-main,
+        .title-emphasis-sub {
+            font-family: var(--font-title-script-final) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.006em !important;
+            line-height: 0.84 !important;
+        }
+
+        /* Module/card titles: also script, but slightly tighter and more controlled. */
+        h3,
+        h4,
+        h5,
+        h6,
+        .formula-board h3,
+        .claim-body h3,
+        .stage-headline,
+        .demo-card-title,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .problem-card h3,
+        .opt-body h3,
+        .demo-title,
+        .stream-title,
+        .neuron-formula h4,
+        .compare-card h4,
+        .formula-step strong,
+        .evidence-card h4,
+        .claim-proof h4,
+        .diagnostic-panel h3,
+        .diagnostic-panel h4,
+        .live-readout strong,
+        .big-live-number {
+            font-family: var(--font-title-script-final) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.018em !important;
+            line-height: 0.98 !important;
+            text-transform: none !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+        }
+
+        /* Keep controls readable: not everything should become hard-to-read handwriting. */
+        .hero-badge,
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .opt-badge,
+        .claim-tab,
+        .claim-tab span,
+        .phase-btn,
+        .tab-btn,
+        .lab-button,
+        .btn,
+        .boundary-auto-button,
+        .nav-links a,
+        .nav-logo,
+        .control-labels,
+        .timeline-landmarks span,
+        .boundary-scrub label,
+        .waterfall-label,
+        .metric-name,
+        .live-readout span,
+        .mini-metric small,
+        .formula-step small,
+        .demo-watermark,
+        .annotation-pin {
+            font-family: var(--font-title-small-final) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.075em !important;
+            line-height: 1.15 !important;
+            text-transform: none !important;
+        }
+
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .opt-badge,
+        .hero-badge {
+            text-transform: uppercase !important;
+            letter-spacing: 0.13em !important;
+        }
+
+        /* Script font needs more size to look deliberate rather than small/thin. */
+        .section-title,
+        .section-header .section-title {
+            font-size: clamp(3.15rem, 6vw, 5.25rem) !important;
+            max-width: 1080px !important;
+        }
+
+        .lab-title,
+        .benchmark-title {
+            font-size: clamp(2.55rem, 4.8vw, 4.35rem) !important;
+        }
+
+        .demo-card-title,
+        .stage-headline,
+        .formula-board h3,
+        .claim-body h3,
+        .boundary-signal-head h3 {
+            font-size: clamp(2.05rem, 3.2vw, 3.05rem) !important;
+        }
+
+        .problem-card h3,
+        .opt-body h3,
+        .caption-card h4,
+        .boundary-signal-card h4,
+        .stream-title,
+        .formula-step strong,
+        .evidence-card h4,
+        .demo-title {
+            font-size: clamp(1.55rem, 2.45vw, 2.25rem) !important;
+        }
+
+        .claim-tab,
+        .phase-btn,
+        .tab-btn,
+        .btn,
+        .lab-button,
+        .boundary-auto-button {
+            font-size: 0.95rem !important;
+        }
+
+        @media (max-width: 760px) {
+            h1,
+            h2,
+            .hero-title-balanced,
+            .hero-title-balanced span,
+            .section-title,
+            .lab-title,
+            .benchmark-title {
+                line-height: 0.98 !important;
+                letter-spacing: 0.006em !important;
+            }
+
+            .section-title,
+            .section-header .section-title {
+                font-size: clamp(2.55rem, 14vw, 3.75rem) !important;
+            }
+
+            .demo-card-title,
+            .stage-headline,
+            .formula-board h3,
+            .claim-body h3,
+            .boundary-signal-head h3 {
+                font-size: clamp(1.75rem, 8vw, 2.55rem) !important;
+                line-height: 1.02 !important;
+            }
+        }
+
+
+        /* Final scope fix: ONLY the hero title and top-level section titles use flowing script. Everything else returns to the premium readable system. */
+        :root {
+            --font-title-script-final: 'Mea Culpa', 'IM Fell English', cursive;
+            --font-body-premium: 'Manrope', 'Inter', 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            --font-display-premium: 'Fraunces', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+            --font-mono-premium: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        /* Reset regular headings, cards, modules, buttons, tabs, nav and metrics away from script/fancy-title overrides. */
+        h1:not(.hero-title-balanced),
+        h2:not(.section-title),
+        h3,
+        h4,
+        h5,
+        h6,
+        .formula-board h3,
+        .claim-body h3,
+        .stage-headline,
+        .demo-card-title,
+        .boundary-signal-head h3,
+        .boundary-signal-card h4,
+        .caption-card h4,
+        .problem-card h3,
+        .opt-body h3,
+        .demo-title,
+        .stream-title,
+        .neuron-formula h4,
+        .compare-card h4,
+        .formula-step strong,
+        .evidence-card h4,
+        .claim-proof h4,
+        .diagnostic-panel h3,
+        .diagnostic-panel h4,
+        .live-readout strong,
+        .big-live-number {
+            font-family: var(--font-body-premium) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.024em !important;
+            line-height: 1.14 !important;
+            text-transform: none !important;
+            text-shadow: none !important;
+        }
+
+        .hero-badge,
+        .section-tag,
+        .section-header .section-tag,
+        .lab-kicker,
+        .demo-card-kicker,
+        .stage-pill,
+        .formula-eyebrow,
+        .opt-badge,
+        .claim-tab,
+        .claim-tab span,
+        .phase-btn,
+        .tab-btn,
+        .lab-button,
+        .btn,
+        .boundary-auto-button,
+        .nav-links a,
+        .nav-logo,
+        .control-labels,
+        .timeline-landmarks span,
+        .boundary-scrub label,
+        .waterfall-label,
+        .metric-name,
+        .live-readout span,
+        .mini-metric small,
+        .formula-step small,
+        .demo-watermark,
+        .annotation-pin,
+        .boundary-readout span,
+        .signal-strength-row strong,
+        .boundary-note {
+            font-family: var(--font-mono-premium) !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.075em !important;
+            line-height: 1.15 !important;
+            text-transform: uppercase !important;
+            text-shadow: none !important;
+        }
+
+        .btn,
+        .lab-button,
+        .phase-btn,
+        .tab-btn,
+        .claim-tab,
+        .boundary-auto-button,
+        .nav-links a {
+            font-family: var(--font-body-premium) !important;
+            font-weight: 800 !important;
+            letter-spacing: -0.004em !important;
+            text-transform: none !important;
+        }
+
+        .metric-value,
+        .mini-metric strong,
+        .stat-value,
+        .waterfall-value,
+        .boundary-scrub output,
+        #progressLabel,
+        #frameLabel {
+            font-family: var(--font-mono-premium) !important;
+            letter-spacing: 0.01em !important;
+            line-height: 1.1 !important;
+        }
+
+        /* Keep only the hero title and the top-level section-title in the flowing script. */
+        .hero h1,
+        .hero-restored h1,
+        .hero-restored h1.hero-title-balanced,
+        .hero-title-balanced,
+        .hero-title-balanced span,
+        .hero-title-balanced .title-emphasis-main,
+        .hero-title-balanced .title-emphasis-sub,
+        .title-emphasis-main,
+        .title-emphasis-sub,
+        .section-title,
+        .section-header .section-title {
+            font-family: var(--font-title-script-final) !important;
+            font-weight: 400 !important;
+            letter-spacing: 0.006em !important;
+            line-height: 0.88 !important;
+            text-transform: none !important;
+            font-feature-settings: 'kern' 1, 'liga' 1, 'dlig' 1;
+            text-shadow: 0 18px 48px rgba(0,0,0,0.36), 0 0 24px rgba(233,69,96,0.10) !important;
+        }
+
+        .section-title,
+        .section-header .section-title {
+            font-size: clamp(3.15rem, 6vw, 5.25rem) !important;
+            max-width: 1080px !important;
+        }
+
+        /* Lab / benchmark titles are module titles, not section titles, so keep them readable. */
+        .lab-title,
+        .benchmark-title {
+            font-family: var(--font-display-premium) !important;
+            font-weight: 700 !important;
+            font-variation-settings: 'SOFT' 72, 'WONK' 1;
+            letter-spacing: -0.035em !important;
+            line-height: 1.04 !important;
+            text-transform: none !important;
+            text-shadow: none !important;
+            font-size: clamp(1.65rem, 3vw, 2.55rem) !important;
+        }
+
+        .demo-card-title,
+        .stage-headline,
+        .formula-board h3,
+        .claim-body h3,
+        .boundary-signal-head h3,
+        .problem-card h3,
+        .opt-body h3,
+        .caption-card h4,
+        .boundary-signal-card h4,
+        .stream-title,
+        .formula-step strong,
+        .evidence-card h4,
+        .demo-title {
+            font-size: inherit !important;
+        }
+
+        @media (max-width: 760px) {
+            .hero-title-balanced,
+            .hero-title-balanced span,
+            .section-title,
+            .section-header .section-title {
+                line-height: 0.98 !important;
+                letter-spacing: 0.004em !important;
+            }
+
+            .section-title,
+            .section-header .section-title {
+                font-size: clamp(2.55rem, 14vw, 3.75rem) !important;
+            }
+        }
+
 </style>
 </head>
 <body>
@@ -4109,6 +5264,7 @@ body::before {
     <div class="boundary-readout">
       <span>sample regime</span>
       <strong id="boundaryRegimeLabel">near boundary</strong>
+      <button class="boundary-auto-button" id="boundaryAutoToggle" type="button" aria-pressed="false">Auto demo</button>
     </div>
   </div>
   <div class="boundary-signal-grid">
@@ -4380,7 +5536,7 @@ body::before {
 <div class="control-labels">
 <span>Training timeline</span>
 <span id="phaseLabel">Phase: shared initialization</span>
-<span>Training progress</span>
+<span id="progressLabel">0%</span>
 </div>
 <input aria-label="Optimization progress" class="scrub-slider" id="landscapeSlider" max="119" min="0" step="1" type="range" value="0"/>
 <div aria-hidden="true" class="timeline-landmarks">
@@ -4479,7 +5635,7 @@ body::before {
 <line x1="60" x2="680" y1="94" y2="94"></line>
 <line x1="60" x2="680" y1="42" y2="42"></line>
 </g>
-<g fill="rgba(255,255,255,.48)" font-family="JetBrains Mono, monospace" font-size="11"><text x="22" y="46">0.70</text><text x="22" y="98">0.55</text><text x="22" y="150">0.40</text><text x="22" y="202">0.25</text><text x="22" y="254">0.10</text>
+<g fill="rgba(255,255,255,.48)" font-family="Azeret Mono, IBM Plex Mono, JetBrains Mono, monospace" font-size="11"><text x="22" y="46">0.70</text><text x="22" y="98">0.55</text><text x="22" y="150">0.40</text><text x="22" y="202">0.25</text><text x="22" y="254">0.10</text>
 
 <text x="58" y="276">0</text><text x="350" y="276">epoch</text><text x="654" y="276">end</text>
 </g>
@@ -4773,25 +5929,70 @@ body::before {
 
             stage.classList.toggle('show-global', p >= 0.68);
         }
-        function toggleLandscapePlayback() {
+        function startLandscapePlayback() {
             const btn = document.getElementById('playLandscape');
             const slider = document.getElementById('landscapeSlider');
+            const lab = document.querySelector('.landscape-lab');
             const speed = Number(document.getElementById('landscapeSpeed')?.value || 760);
-            if (!btn || !slider) return;
-
-            if (landscapeTimer) {
-                clearInterval(landscapeTimer);
-                landscapeTimer = null;
-                btn.textContent = 'Play';
-                return;
-            }
-
+            if (!btn || !slider || landscapeTimer) return;
+            if (Number(slider.value) >= LANDSCAPE_FRAME_MAX) setLandscapeFrame(0);
             btn.textContent = 'Pause';
+            btn.setAttribute('aria-pressed', 'true');
+            lab?.classList.add('autoplay-active');
             landscapeTimer = setInterval(() => {
                 const current = Number(slider.value);
                 const next = current >= LANDSCAPE_FRAME_MAX ? 0 : current + 1;
                 setLandscapeFrame(next);
             }, speed);
+        }
+
+        function stopLandscapePlayback() {
+            const btn = document.getElementById('playLandscape');
+            const lab = document.querySelector('.landscape-lab');
+            if (landscapeTimer) {
+                clearInterval(landscapeTimer);
+                landscapeTimer = null;
+            }
+            if (btn) {
+                btn.textContent = 'Play';
+                btn.setAttribute('aria-pressed', 'false');
+            }
+            lab?.classList.remove('autoplay-active');
+        }
+
+        function toggleLandscapePlayback() {
+            if (landscapeTimer) stopLandscapePlayback();
+            else startLandscapePlayback();
+        }
+
+        function setupLandscapeAutoplayOnView() {
+            const lab = document.querySelector('.landscape-lab');
+            if (!lab || !('IntersectionObserver' in window)) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            let userPausedLandscape = false;
+            const playBtn = document.getElementById('playLandscape');
+            playBtn?.addEventListener('click', () => {
+                userPausedLandscape = !!landscapeTimer;
+            }, { capture: true });
+            const yieldLandscapeToHuman = (event) => {
+                if (!event.isTrusted) return;
+                if (event.target?.closest?.('#playLandscape')) return;
+                if (event.target?.closest?.('button, input, select, a, [role=button]')) {
+                    userPausedLandscape = true;
+                    stopLandscapePlayback();
+                }
+            };
+            lab.addEventListener('pointerdown', yieldLandscapeToHuman, { capture: true });
+            lab.addEventListener('keydown', yieldLandscapeToHuman, { capture: true });
+            const observer = new IntersectionObserver((entries) => {
+                const entry = entries[0];
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.34 && !userPausedLandscape) {
+                    startLandscapePlayback();
+                } else if (!entry.isIntersecting || entry.intersectionRatio < 0.12) {
+                    stopLandscapePlayback();
+                }
+            }, { threshold: [0, 0.12, 0.34, 0.6, 1] });
+            observer.observe(lab);
         }
 
         function setupLandscapeDemo() {
@@ -4804,28 +6005,31 @@ body::before {
                 frame.onload = hideLandscapeFrameError;
             }
             setLandscapeFrame(0);
-            slider.addEventListener('input', (e) => setLandscapeFrame(e.target.value));
+            slider.addEventListener('input', (e) => {
+                stopLandscapePlayback();
+                setLandscapeFrame(e.target.value);
+            });
             slider.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
                     e.preventDefault();
+                    stopLandscapePlayback();
                     setLandscapeFrame(Number(slider.value) - 1);
                 }
                 if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
                     e.preventDefault();
+                    stopLandscapePlayback();
                     setLandscapeFrame(Number(slider.value) + 1);
                 }
             });
             document.getElementById('playLandscape')?.addEventListener('click', toggleLandscapePlayback);
             document.getElementById('landscapeSpeed')?.addEventListener('change', () => {
-                if (landscapeTimer) {
-                    toggleLandscapePlayback();
-                    toggleLandscapePlayback();
-                }
+                stopLandscapePlayback();
             });
             document.getElementById('toggleAnnotations')?.addEventListener('click', () => {
                 annotationsVisible = !annotationsVisible;
                 document.getElementById('frameStage')?.classList.toggle('hide-annotations', !annotationsVisible);
             });
+            setupLandscapeAutoplayOnView();
         }
 
         // Removed claim explorer data retained unused in source
@@ -5296,6 +6500,7 @@ body::before {
     const btn = e.target.closest('button[data-budget]');
     if (btn) render(Number(btn.dataset.budget));
   });
+  window.__renderDiagnosticBudget = render;
   render(0);
 })();
 
@@ -5304,12 +6509,31 @@ body::before {
 (function setupBoundarySignalSchematic(){
   const slider = document.getElementById('boundarySignalRange');
   if (!slider) return;
+  const panel = document.querySelector('.boundary-signal-panel');
   const ffFill = document.getElementById('ffBoundaryFill');
   const tscdFill = document.getElementById('tscdBoundaryFill');
   const ffValue = document.getElementById('ffBoundaryValue');
   const tscdValue = document.getElementById('tscdBoundaryValue');
   const regime = document.getElementById('boundaryRegimeLabel');
   const position = document.getElementById('boundaryPositionValue');
+  const autoBtn = document.getElementById('boundaryAutoToggle');
+  let boundaryTimer = null;
+  let direction = 1;
+  let userPaused = false;
+
+  panel?.addEventListener('pointerdown', (event) => {
+    if (!event.isTrusted) return;
+    if (event.target?.closest?.('#boundaryAutoToggle')) return;
+    userPaused = true;
+    stopAuto();
+  }, { capture: true });
+
+  panel?.addEventListener('keydown', (event) => {
+    if (!event.isTrusted) return;
+    userPaused = true;
+    stopAuto();
+  }, { capture: true });
+
   function render(){
     const x = Number(slider.value);
     const distance = Math.abs(x - 50) / 50;
@@ -5322,8 +6546,203 @@ body::before {
     position.textContent = `${x}%`;
     regime.textContent = distance < 0.18 ? 'near boundary' : distance < 0.55 ? 'ambiguous sample' : 'clear sample';
   }
-  slider.addEventListener('input', render);
+
+  function stopAuto(){
+    if (boundaryTimer) {
+      clearInterval(boundaryTimer);
+      boundaryTimer = null;
+    }
+    panel?.classList.remove('auto-running');
+    autoBtn?.setAttribute('aria-pressed', 'false');
+    if (autoBtn) autoBtn.textContent = 'Auto demo';
+  }
+
+  function startAuto(){
+    if (boundaryTimer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    panel?.classList.add('auto-running');
+    autoBtn?.setAttribute('aria-pressed', 'true');
+    if (autoBtn) autoBtn.textContent = 'Pause auto';
+    boundaryTimer = setInterval(() => {
+      let next = Number(slider.value) + direction * 1.4;
+      if (next >= 94) { next = 94; direction = -1; }
+      if (next <= 6) { next = 6; direction = 1; }
+      slider.value = String(Math.round(next));
+      render();
+    }, 70);
+  }
+
+  slider.addEventListener('input', () => {
+    userPaused = true;
+    stopAuto();
+    render();
+  });
+
+  autoBtn?.addEventListener('click', () => {
+    if (boundaryTimer) {
+      userPaused = true;
+      stopAuto();
+    } else {
+      userPaused = false;
+      startAuto();
+    }
+  });
+
+  if (panel && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.38 && !userPaused) {
+        startAuto();
+      } else if (!entry.isIntersecting || entry.intersectionRatio < 0.14) {
+        stopAuto();
+      }
+    }, { threshold: [0, 0.14, 0.38, 0.7, 1] });
+    observer.observe(panel);
+  } else {
+    startAuto();
+  }
+
   render();
+})();
+
+
+
+// Batch2 full auto-preview orchestration. Each preview starts only when its section enters the viewport,
+// and every trusted human click/input inside that section stops the preview so the user controls it manually.
+(function setupFullSectionAutoPreviews(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function createAutoPreview({ container, interval = 2400, onTick, onStart, onStop, startRatio = 0.34, stopRatio = 0.12 }) {
+    if (!container || typeof onTick !== 'function') return null;
+    let timer = null;
+    let stoppedByHuman = false;
+
+    function stop(markHuman = false) {
+      if (markHuman) stoppedByHuman = true;
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      container.classList.remove('auto-demo-running');
+      if (onStop) onStop();
+    }
+
+    function start() {
+      if (stoppedByHuman || timer) return;
+      container.classList.add('auto-demo-running');
+      if (onStart) onStart();
+      timer = setInterval(onTick, interval);
+    }
+
+    function humanStop(event) {
+      if (!event.isTrusted) return;
+      stop(true);
+    }
+
+    container.addEventListener('pointerdown', humanStop, { capture: true });
+    container.addEventListener('keydown', humanStop, { capture: true });
+    container.addEventListener('input', humanStop, { capture: true });
+    container.addEventListener('change', humanStop, { capture: true });
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && entry.intersectionRatio >= startRatio && !stoppedByHuman) start();
+        if (!entry.isIntersecting || entry.intersectionRatio < stopRatio) stop(false);
+      }, { threshold: [0, stopRatio, startRatio, 0.6, 1] });
+      io.observe(container);
+    } else {
+      start();
+    }
+
+    return { start, stop, isStoppedByHuman: () => stoppedByHuman };
+  }
+
+  // Equation pathway: automatically walks through the derivation cards.
+  const formulaLab = document.querySelector('#formula-pathway .formula-lab');
+  const formulaSteps = Array.from(document.querySelectorAll('#formulaStepList .formula-step'));
+  if (formulaLab && formulaSteps.length && typeof setFormulaStep === 'function') {
+    createAutoPreview({
+      container: formulaLab,
+      interval: 2700,
+      onTick: () => {
+        const active = formulaSteps.findIndex(btn => btn.classList.contains('active'));
+        const next = formulaSteps[(active + 1 + formulaSteps.length) % formulaSteps.length];
+        if (next) setFormulaStep(next.dataset.formula);
+      }
+    });
+  }
+
+  // Coupled-mechanism lab: cycles phases and softly moves all parameter controls.
+  const mechanismCard = document.querySelector('#coupled-dynamics .glass-demo-card');
+  const phaseButtons = Array.from(document.querySelectorAll('#mechanismPhaseBtns .phase-btn'));
+  if (mechanismCard && phaseButtons.length && typeof setMechanismPhase === 'function') {
+    let tick = 0;
+    const setRange = (id, value) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.value = String(value);
+    };
+    createAutoPreview({
+      container: mechanismCard,
+      interval: 620,
+      onTick: () => {
+        tick += 1;
+        const wave = (offset = 0) => 0.5 + 0.5 * Math.sin(tick * 0.42 + offset);
+        setRange('gammaControl', (0.05 + wave(0.0) * 0.45).toFixed(2));
+        setRange('windowControl', String(1 + Math.round(wave(1.4) * 4)));
+        setRange('planeControl', String(1 + Math.round(wave(2.2) * 4)));
+        setRange('fusionControl', (wave(3.1)).toFixed(2));
+        if (typeof updateBiasVarianceLab === 'function') updateBiasVarianceLab();
+
+        if (tick % 4 === 0) {
+          const active = phaseButtons.findIndex(btn => btn.classList.contains('active'));
+          const next = phaseButtons[(active + 1 + phaseButtons.length) % phaseButtons.length];
+          if (next) setMechanismPhase(next.dataset.phase);
+        }
+      }
+    });
+  }
+
+  // Experimental table: alternates between filters/sorts so visitors can see the matrix is interactive.
+  const benchmarkBox = document.getElementById('benchmark-matrix');
+  const domainSelect = document.getElementById('benchmarkDomainSelect');
+  const sortSelect = document.getElementById('benchmarkSortSelect');
+  if (benchmarkBox && domainSelect && sortSelect && typeof renderBenchmarkMatrix === 'function') {
+    const domains = Array.from(domainSelect.options).map(o => o.value);
+    const sorts = Array.from(sortSelect.options).map(o => o.value);
+    let i = 0;
+    createAutoPreview({
+      container: benchmarkBox,
+      interval: 2600,
+      onTick: () => {
+        i += 1;
+        domainSelect.value = domains[i % domains.length];
+        sortSelect.value = sorts[Math.floor(i / 2) % sorts.length];
+        renderBenchmarkMatrix();
+      }
+    });
+  }
+
+  // Diagnostics: cycles the error-budget tabs while the panel is visible.
+  const diagnosticGrid = document.querySelector('#analysis .diagnostic-grid');
+  const budgetTabs = document.getElementById('budgetTabs');
+  if (diagnosticGrid && budgetTabs) {
+    let budgetIndex = 0;
+    createAutoPreview({
+      container: diagnosticGrid,
+      interval: 2300,
+      onTick: () => {
+        const buttons = Array.from(budgetTabs.querySelectorAll('button[data-budget]'));
+        if (!buttons.length) return;
+        budgetIndex = (budgetIndex + 1) % buttons.length;
+        if (typeof window.__renderDiagnosticBudget === 'function') {
+          window.__renderDiagnosticBudget(budgetIndex);
+        } else {
+          buttons[budgetIndex].click();
+        }
+      }
+    });
+  }
 })();
 
 </script>
