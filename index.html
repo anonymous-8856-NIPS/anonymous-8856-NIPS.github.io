@@ -5936,8 +5936,13 @@ body::before {
 <div class="diagnostic-grid fade-in">
 <div class="diagnostic-panel">
 <h3>Gradient alignment during training</h3>
-<p>Relative cosine-alignment sketch for the BP-gradient diagnostic. The traces encode qualitative ordering only and are not reported training measurements.</p>
-<svg aria-label="Gradient alignment trace" class="trace-svg" role="img" viewbox="0 0 720 300">
+<p>Noisy cosine-alignment sketch for the BP-gradient diagnostic. Thin traces show raw mini-batch fluctuations; brighter traces show the smoothed trend, preserving qualitative ordering without looking artificially clean.</p>
+<svg aria-label="Noisy gradient-alignment training trace" class="trace-svg" role="img" viewbox="0 0 720 300">
+<defs>
+<linearGradient id="traceGlowFF" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#f08080" stop-opacity="0.35"></stop><stop offset="100%" stop-color="#f08080" stop-opacity="0.9"></stop></linearGradient>
+<linearGradient id="traceGlowMid" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#f2c56b" stop-opacity="0.35"></stop><stop offset="100%" stop-color="#f2c56b" stop-opacity="0.95"></stop></linearGradient>
+<linearGradient id="traceGlowFull" x1="0" x2="1" y1="0" y2="0"><stop offset="0%" stop-color="#7dd3fc" stop-opacity="0.35"></stop><stop offset="100%" stop-color="#7dd3fc" stop-opacity="1"></stop></linearGradient>
+</defs>
 <g stroke="rgba(255,255,255,.08)" stroke-width="1">
 <line x1="60" x2="60" y1="40" y2="250"></line>
 <line x1="60" x2="680" y1="250" y2="250"></line>
@@ -5947,19 +5952,28 @@ body::before {
 <line x1="60" x2="680" y1="42" y2="42"></line>
 </g>
 <g fill="rgba(255,255,255,.48)" font-family="Azeret Mono, IBM Plex Mono, JetBrains Mono, monospace" font-size="11"><text x="22" y="46">0.70</text><text x="22" y="98">0.55</text><text x="22" y="150">0.40</text><text x="22" y="202">0.25</text><text x="22" y="254">0.10</text>
-
 <text x="58" y="276">0</text><text x="350" y="276">epoch</text><text x="654" y="276">end</text>
 </g>
-
-
-
-<polyline fill="none" points="60.0,222.0 125.0,220.2 190.0,222.7 255.0,216.4 320.0,214.3 385.0,215.7 450.0,210.1 515.0,207.7 580.0,208.7 645.0,203.8 680.0,205.2" stroke="#f08080" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><polyline fill="none" points="60.0,218.5 125.0,209.8 190.0,206.2 255.0,200.3 320.0,192.2 385.0,188.4 450.0,183.2 515.0,178.9 580.0,172.3 645.0,168.1 680.0,165.6" stroke="#f2c56b" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><polyline fill="none" points="60.0,215.0 125.0,202.8 190.0,191.2 255.0,182.1 320.0,173.4 385.0,164.9 450.0,158.6 515.0,151.3 580.0,146.4 645.0,140.1 680.0,137.7" stroke="#7dd3fc" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.5"></polyline></svg>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<polyline points="60.0,235.5 70.9,231.5 81.8,222.0 92.6,207.2 103.5,229.0 114.4,217.2 125.3,216.6 136.1,223.5 147.0,207.9 157.9,214.6 168.8,225.5 179.6,216.1 190.5,207.6 201.4,222.6 212.3,203.6 223.2,203.9 234.0,202.7 244.9,211.2 255.8,224.9 266.7,206.9 277.5,197.4 288.4,215.2 299.3,210.9 310.2,206.3 321.1,202.6 331.9,193.7 342.8,211.4 353.7,199.1 364.6,168.4 375.4,207.9 386.3,202.5 397.2,196.7 408.1,199.3 418.9,201.4 429.8,204.7 440.7,195.6 451.6,209.8 462.5,195.5 473.3,198.7 484.2,206.9 495.1,192.2 506.0,204.5 516.8,208.0 527.7,196.4 538.6,207.5 549.5,207.2 560.4,201.4 571.2,187.1 582.1,190.4 593.0,184.7 603.9,206.4 614.7,185.6 625.6,180.2 636.5,181.9 647.4,189.8 658.2,191.3 669.1,194.7 680.0,204.9" stroke="#f08080" stroke-width="1.55" opacity="0.34"></polyline>
+<polyline points="60.0,219.0 70.9,210.8 81.8,208.7 92.6,208.1 103.5,193.3 114.4,186.3 125.3,200.5 136.1,181.8 147.0,202.5 157.9,179.1 168.8,202.9 179.6,186.4 190.5,178.4 201.4,169.7 212.3,191.2 223.2,177.5 234.0,180.9 244.9,181.0 255.8,208.1 266.7,168.5 277.5,162.8 288.4,162.3 299.3,165.3 310.2,175.7 321.1,159.6 331.9,166.0 342.8,158.0 353.7,159.2 364.6,156.8 375.4,170.2 386.3,134.6 397.2,150.1 408.1,140.0 418.9,139.6 429.8,137.4 440.7,153.7 451.6,139.1 462.5,145.8 473.3,149.7 484.2,135.6 495.1,128.3 506.0,150.9 516.8,139.5 527.7,153.7 538.6,150.8 549.5,140.6 560.4,144.8 571.2,148.6 582.1,151.1 593.0,147.5 603.9,145.2 614.7,139.6 625.6,133.1 636.5,144.6 647.4,137.1 658.2,151.6 669.1,138.7 680.0,149.4" stroke="#f2c56b" stroke-width="1.55" opacity="0.34"></polyline>
+<polyline points="60.0,213.9 70.9,197.0 81.8,218.3 92.6,188.8 103.5,179.9 114.4,201.1 125.3,172.8 136.1,183.4 147.0,161.4 157.9,160.8 168.8,161.0 179.6,151.7 190.5,164.9 201.4,143.0 212.3,160.4 223.2,125.4 234.0,150.8 244.9,152.0 255.8,148.4 266.7,144.2 277.5,130.7 288.4,148.5 299.3,133.2 310.2,139.3 321.1,143.7 331.9,125.0 342.8,127.1 353.7,124.5 364.6,128.6 375.4,111.5 386.3,123.8 397.2,114.6 408.1,111.2 418.9,104.3 429.8,124.1 440.7,107.7 451.6,115.6 462.5,118.9 473.3,97.0 484.2,98.4 495.1,101.3 506.0,96.3 516.8,94.9 527.7,102.1 538.6,83.2 549.5,86.7 560.4,99.6 571.2,94.2 582.1,97.7 593.0,115.8 603.9,101.6 614.7,96.3 625.6,92.2 636.5,94.6 647.4,92.9 658.2,97.2 669.1,89.9 680.0,88.3" stroke="#7dd3fc" stroke-width="1.7" opacity="0.36"></polyline>
+<polyline points="60.0,224.0 70.9,225.0 81.8,223.7 92.6,222.7 103.5,221.0 114.4,217.6 125.3,216.5 136.1,219.2 147.0,217.3 157.9,216.0 168.8,216.8 179.6,214.0 190.5,213.4 201.4,211.7 212.3,209.7 223.2,210.9 234.0,210.8 244.9,207.2 255.8,208.9 266.7,209.9 277.5,210.4 288.4,209.2 299.3,204.7 310.2,205.4 321.1,205.6 331.9,198.9 342.8,198.5 353.7,198.0 364.6,197.1 375.4,197.9 386.3,196.5 397.2,197.3 408.1,201.1 418.9,201.4 429.8,200.4 440.7,200.7 451.6,201.8 462.5,200.5 473.3,200.5 484.2,202.2 495.1,200.3 506.0,202.0 516.8,203.2 527.7,202.5 538.6,201.7 549.5,199.7 560.4,196.4 571.2,197.8 582.1,194.7 593.0,190.8 603.9,188.1 614.7,188.4 625.6,188.6 636.5,190.0 647.4,189.8 658.2,190.5 669.1,192.5 680.0,195.2" stroke="url(#traceGlowFF)" stroke-width="3.1"></polyline>
+<polyline points="60.0,211.6 70.9,208.0 81.8,204.4 92.6,203.8 103.5,198.5 114.4,197.3 125.3,193.1 136.1,192.3 147.0,191.3 157.9,190.2 168.8,185.8 179.6,187.2 190.5,183.6 201.4,183.9 212.3,180.7 223.2,183.8 234.0,182.4 244.9,181.4 255.8,177.3 266.7,175.6 277.5,174.8 288.4,171.8 299.3,165.7 310.2,164.2 321.1,163.7 331.9,162.9 342.8,163.6 353.7,157.8 364.6,156.4 375.4,152.7 386.3,150.1 397.2,147.0 408.1,146.5 418.9,142.1 429.8,143.7 440.7,143.6 451.6,143.0 462.5,141.4 473.3,143.3 484.2,141.3 495.1,143.4 506.0,144.1 516.8,142.8 527.7,144.1 538.6,147.0 549.5,147.0 560.4,148.2 571.2,147.0 582.1,145.4 593.0,144.3 603.9,144.3 614.7,142.6 625.6,142.7 636.5,141.4 647.4,142.0 658.2,142.4 669.1,144.3 680.0,144.2" stroke="url(#traceGlowMid)" stroke-width="3.25"></polyline>
+<polyline points="60.0,204.5 70.9,199.6 81.8,199.8 92.6,196.0 103.5,191.6 114.4,186.5 125.3,178.3 136.1,174.3 147.0,170.3 157.9,165.1 168.8,160.9 179.6,157.6 190.5,152.5 201.4,151.0 212.3,149.7 223.2,149.3 234.0,146.3 244.9,144.6 255.8,142.9 266.7,144.0 277.5,142.3 288.4,141.2 299.3,137.8 310.2,135.4 321.1,134.5 331.9,131.6 342.8,128.5 353.7,126.3 364.6,122.1 375.4,120.2 386.3,116.9 397.2,116.9 408.1,113.9 418.9,114.5 429.8,113.8 440.7,111.2 451.6,109.4 462.5,109.0 473.3,105.0 484.2,103.2 495.1,101.3 506.0,96.2 516.8,94.7 527.7,94.9 538.6,93.9 549.5,94.1 560.4,97.0 571.2,97.0 582.1,98.8 593.0,99.6 603.9,98.9 614.7,98.7 625.6,98.7 636.5,95.0 647.4,93.1 658.2,92.5 669.1,92.6 680.0,92.1" stroke="url(#traceGlowFull)" stroke-width="3.6"></polyline>
+</g>
+<g fill="rgba(255,255,255,.45)" font-family="Azeret Mono, IBM Plex Mono, JetBrains Mono, monospace" font-size="10">
+<text x="466" y="58">raw mini-batch jitter</text>
+<text x="464" y="72">+ smoothed trend</text>
+</g>
+</svg>
 <div class="trace-legend">
 <span><i class="trace-line-swatch" style="background:#f08080"></i>FF</span>
 <span><i class="trace-line-swatch" style="background:#f2c56b"></i>TSCD without controls</span>
 <span><i class="trace-line-swatch" style="background:#7dd3fc"></i>Full TSCD</span>
+<span><i class="trace-line-swatch" style="background:rgba(255,255,255,.35)"></i>thin = raw, thick = smoothed</span>
 </div>
-<div class="demo-notice">Conceptual diagnostic sketch · not a reported training measurement.</div>
+<div class="demo-notice">Conceptual stochastic diagnostic sketch · raw jitter plus smoothed trend, not a reported training measurement.</div>
 </div>
 <div class="diagnostic-panel">
 <h3>Error budget by component</h3>
@@ -6223,10 +6237,12 @@ body::before {
             const progressLabel = document.getElementById('progressLabel');
             if (progressLabel) progressLabel.textContent = `${Math.round(p * 100)}%`;
 
-            const ffLoss = 1 - 0.34 * Math.min(p, 0.62);
-            const tscdLoss = 1 - 0.72 * Math.pow(p, 0.9);
-            const alignment = 0.31 + 0.56 * p;
-            const risk = Math.max(0.12, 0.94 - 0.78 * p);
+            const batchJitter = (freq, phase, amp) => amp * Math.sin(freq * p + phase) + amp * 0.55 * Math.sin(freq * 2.7 * p + phase * 0.37);
+            const earlyNoise = 1 - 0.58 * p;
+            const ffLoss = Math.max(0.73, Math.min(1.04, 1 - 0.28 * Math.min(p, 0.66) + batchJitter(54, 0.8, 0.020 * earlyNoise)));
+            const tscdLoss = Math.max(0.25, Math.min(1.03, 1 - 0.70 * Math.pow(p, 0.86) + batchJitter(49, 2.1, 0.024 * earlyNoise) - (p > 0.52 && p < 0.63 ? 0.022 * Math.sin((p - 0.52) / 0.11 * Math.PI) : 0)));
+            const alignment = Math.max(0.26, Math.min(0.91, 0.31 + 0.56 * p + batchJitter(36, 1.4, 0.020 * earlyNoise)));
+            const risk = Math.max(0.12, Math.min(0.96, 0.94 - 0.78 * p + batchJitter(31, 0.35, 0.018 * earlyNoise)));
 
             document.getElementById('ffLoss').textContent = ffLoss.toFixed(2);
             document.getElementById('tscdLoss').textContent = tscdLoss.toFixed(2);
